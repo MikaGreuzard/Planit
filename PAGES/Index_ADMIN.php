@@ -51,37 +51,37 @@
      <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analytics</span>
+         <span class="links_name">Analyses</span>
        </a>
-       <span class="tooltip">Analytics</span>
+       <span class="tooltip">Analyses</span>
      </li>
      <li>
        <a href="#">
          <i class='bx bx-folder' ></i>
-         <span class="links_name">File Manager</span>
+         <span class="links_name">Archives</span>
        </a>
-       <span class="tooltip">Files</span>
+       <span class="tooltip">Archives</span>
      </li>
      <li>
        <a href="#">
-         <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Order</span>
+         <i class='bx bx-folder-plus'></i>
+         <span class="links_name">Boite à idée</span>
        </a>
-       <span class="tooltip">Order</span>
+       <span class="tooltip">Boite à idée</span>
      </li>
      <li>
        <a href="#">
-         <i class='bx bx-heart' ></i>
-         <span class="links_name">Saved</span>
+         <i class='bx bx-question-mark'></i>
+         <span class="links_name">Informations</span>
        </a>
-       <span class="tooltip">Saved</span>
+       <span class="tooltip">Informations</span>
      </li>
      <li>
        <a href="#">
          <i class='bx bx-cog' ></i>
-         <span class="links_name">Setting</span>
+         <span class="links_name">Réglages</span>
        </a>
-       <span class="tooltip">Setting</span>
+       <span class="tooltip">Réglages</span>
      </li>
      <li class="profile no-animation">
         <div class="profile-details">
