@@ -28,14 +28,14 @@
          <span class="tooltip">Rechercher</span>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-home-alt'></i>
-          <span class="links_name">Accueil</span>
+        <a href="#" class='Accueil'>
+          <i class='bx bx-home-alt Accueil'></i>
+          <span class="links_name Accueil">Accueil</span>
         </a>
-         <span class="tooltip">Accueil</span>
+         <span class="tooltip Accueil">Accueil</span>
       </li>
       <li>
-       <a href="#">
+       <a href="../PAGES/Equipe_ADMIN.php">
          <i class='bx bx-user' ></i>
          <span class="links_name">Equipe</span>
        </a>

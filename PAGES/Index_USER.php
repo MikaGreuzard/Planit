@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
@@ -24,11 +28,11 @@
          <span class="tooltip">Rechercher</span>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-home-alt'></i>
-          <span class="links_name">Accueil</span>
+        <a href="#" class='Accueil'>
+          <i class='bx bx-home-alt Accueil'></i>
+          <span class="links_name Accueil">Accueil</span>
         </a>
-         <span class="tooltip">Accueil</span>
+         <span class="tooltip Accueil">Accueil</span>
       </li>
       <li>
        <a href="#">
@@ -47,56 +51,62 @@
      <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analytics</span>
+         <span class="links_name">Analyses</span>
        </a>
-       <span class="tooltip">Analytics</span>
+       <span class="tooltip">Analyses</span>
      </li>
      <li>
        <a href="#">
          <i class='bx bx-folder' ></i>
-         <span class="links_name">File Manager</span>
+         <span class="links_name">Archives</span>
        </a>
-       <span class="tooltip">Files</span>
+       <span class="tooltip">Archives</span>
      </li>
      <li>
        <a href="#">
-         <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Order</span>
+         <i class='bx bx-folder-plus'></i>
+         <span class="links_name">Boite à idée</span>
        </a>
-       <span class="tooltip">Order</span>
+       <span class="tooltip">Boite à idée</span>
      </li>
      <li>
        <a href="#">
-         <i class='bx bx-heart' ></i>
-         <span class="links_name">Saved</span>
+         <i class='bx bx-question-mark'></i>
+         <span class="links_name">Informations</span>
        </a>
-       <span class="tooltip">Saved</span>
+       <span class="tooltip">Informations</span>
      </li>
      <li>
        <a href="#">
          <i class='bx bx-cog' ></i>
-         <span class="links_name">Setting</span>
+         <span class="links_name">Réglages</span>
        </a>
-       <span class="tooltip">Setting</span>
+       <span class="tooltip">Réglages</span>
      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-             <div class="name">Prem Shahi</div>
-             <div class="job">Web designer</div>
-           </div>
-         </div>
-         <a href="../PAGES/Login.php">
-          <i class='bx bx-log-out' id="log_out" ></i>
-         </a>
-     </li>
+     <li class="profile no-animation">
+        <div class="profile-details">
+          <!--<img src="profile.jpg" alt="profileImg">-->
+          <div class="name_job">
+          <div class="name"><?php echo isset($_SESSION['PrenomUtilisateur']) && isset($_SESSION['NomUtilisateur']) ? $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur'] : ''; ?></div>
+          <div class="job"><?php echo isset($_SESSION['StatutUtilisateur']) ? $_SESSION['StatutUtilisateur'] : ''; ?></div>
+          </div>
+        </div>
+        <a href="../PAGES/Login.php" class='TEST'>
+          <i class='bx bx-log-out' id="log_out"></i>
+        </a>
+      </li>
     </ul>
   </div>
   <section class="home-section">
-      <div class="text">USER</div>
-  </section>
-  <script>
+    <div class="text">Bienvenue sur Plan'it</div>
+      <div class='text3'>
+        <span class="Planit">Plan'it</span> simplifie la gestion des tâches en équipe. Planifiez, organisez et suivez l'avancement de vos projets en temps réel. Assignez des tâches, partagez des commentaires et des fichiers, et collaborez efficacement pour atteindre vos objectifs plus rapidement.
+      </div>
+      <div class='text2'>
+        Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
+    </div>
+  </section>  
+<script>
   let sidebar = document.querySelector(".sidebar");
   let closeBtn = document.querySelector("#btn");
   let searchBtn = document.querySelector(".bx-search");
