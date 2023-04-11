@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="../CSS/Equipe_ADMIN.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -28,21 +28,21 @@
          <span class="tooltip">Rechercher</span>
       </li>
       <li>
-        <a href="#" class='Accueil'>
+        <a href="../PAGES/ADMIN_Index.php">
           <i class='bx bx-home-alt Accueil'></i>
           <span class="links_name Accueil">Accueil</span>
         </a>
          <span class="tooltip Accueil">Accueil</span>
       </li>
       <li>
-       <a href="../PAGES/Equipe_ADMIN.php">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Equipe</span>
+       <a href="../PAGES/ADMIN_Equipe.php" class='Equipe'>
+         <i class='bx bx-user Equipe' ></i>
+         <span class="links_name Equipe">Equipe</span>
        </a>
-       <span class="tooltip">Equipe</span>
+       <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../PAGES/ADMIN_Tache">
          <i class='bx bx-task'></i>
          <span class="links_name">Tâches</span>
        </a>
@@ -98,10 +98,57 @@
     </ul>
   </div>
   <section class="home-section">
-    <div class="text">Bienvenue sur Plan'it</div>
-      <div class='text3'>
-        <span class="Planit">Plan'it</span> simplifie la gestion des tâches en équipe. Planifiez, organisez et suivez l'avancement de vos projets en temps réel. Assignez des tâches, partagez des commentaires et des fichiers, et collaborez efficacement pour atteindre vos objectifs plus rapidement.
-      </div>
+  <body>
+    <main class="table">
+        <section class="table__header">
+            <h1 class='TableTitre'>Equipe <?php echo $_SESSION['ServiceUtilisateur']?></h1>
+            <div class="input-group">
+                <input type="search" placeholder="Rechercher...">
+                <i class='bx bx-search'></i>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Prénom <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Service <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Séléction <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Début du PHP (génére de l'html avec des print / echo)-->
+                    <?php
+                    # Permet de géré les erreurs
+                        try {
+                            # Connexion à la base de donnée, on garde cette connexion dans une variable
+                            # sqlite est le type de base de donnée, ce qui suit après les : est la base de donnée (en local pour sqlite)
+                            $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+
+                            # Maintenant qu'on est connecté on récupère les données (table Demandes)
+                            # query permet d'executer une requete sql
+                            $Utilisateurs = $pdo->query("SELECT * FROM Utilisateur WHERE ServiceUtilisateur = '{$_SESSION['ServiceUtilisateur']}' AND AccesUtilisateur != 'ADMIN'");
+                            # On affiche les données de la base
+                            foreach($Utilisateurs as $Utilisateurs) {
+                                # On affiche les données de la base
+                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> <td> <a href='#'><i class='bx bx-search' ></i></a></td> </tr>";
+                            }
+                        } catch (PDOException $e) {
+                            die($e);
+                        }
+
+
+                    ?>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src='../JS/Equipe_ADMIN.js'></script>
+</body>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
     </div>

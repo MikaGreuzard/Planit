@@ -37,10 +37,10 @@ if(isset($_POST['Identifiant']) && isset($_POST['MotDePasse'])) {
             $_SESSION['AccesUtilisateur'] = $AccesUtilisateur;
             $_SESSION['ServiceUtilisateur'] = $ServiceUtilisateur;
             if ($AccesUtilisateur == "ADMIN") {
-              header('Location: ../PAGES/Index_ADMIN.php');
+              header('Location: ../PAGES/ADMINè_Index.php');
             }
             else if ($AccesUtilisateur == "USER") {
-              header('Location: ../PAGES/Index_USER.php');
+              header('Location: ../PAGES/USER_Index.php');
             }
         }
     } catch(PDOException $e) {

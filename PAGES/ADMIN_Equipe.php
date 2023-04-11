@@ -28,21 +28,21 @@
          <span class="tooltip">Rechercher</span>
       </li>
       <li>
-        <a href="../PAGES/Index_ADMIN.php">
+        <a href="../PAGES/ADMIN_Index.php">
           <i class='bx bx-home-alt Accueil'></i>
           <span class="links_name Accueil">Accueil</span>
         </a>
          <span class="tooltip Accueil">Accueil</span>
       </li>
       <li>
-       <a href="../PAGES/Equipe_ADMIN.php" class='Equipe'>
+       <a href="../PAGES/ADMIN_Equipe.php" class='Equipe'>
          <i class='bx bx-user Equipe' ></i>
          <span class="links_name Equipe">Equipe</span>
        </a>
        <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../PAGES/ADMIN_Tache">
          <i class='bx bx-task'></i>
          <span class="links_name">Tâches</span>
        </a>
@@ -101,7 +101,7 @@
   <body>
     <main class="table">
         <section class="table__header">
-            <h1 class='TableTitre'>Equipe</h1>
+            <h1 class='TableTitre'>Equipe <?php echo $_SESSION['ServiceUtilisateur']?></h1>
             <div class="input-group">
                 <input type="search" placeholder="Rechercher...">
                 <i class='bx bx-search'></i>
@@ -117,6 +117,7 @@
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Service <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Séléction <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,7 +135,7 @@
                             # On affiche les données de la base
                             foreach($Utilisateurs as $Utilisateurs) {
                                 # On affiche les données de la base
-                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> </tr>";
+                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> <td> <a href='#'><i class='bx bx-search' ></i></a></td> </tr>";
                             }
                         } catch (PDOException $e) {
                             die($e);
