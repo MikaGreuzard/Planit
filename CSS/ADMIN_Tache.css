@@ -255,7 +255,7 @@
   }
 }
 
-.Equipe i {
+.Tache i {
   background: #FFF;
   color: #28536B;
 }
@@ -291,17 +291,17 @@
 }
 
 
-.sidebar .Equipe li  {
+.sidebar .Tache li  {
   background: #fff;
   color: #28536B;
 }
 
-.sidebar li a.Equipe {
+.sidebar li a.Tache {
   background: #FFF;
   color: #28536B;
 }
 
-.sidebar li a.Equipe .links_name.Equipe {
+.sidebar li a.Tache .links_name.Tache {
   color: #28536B;
 }
 
@@ -637,12 +637,13 @@ thead th.active,tbody td.active {
 }
 
 
-.bx-search {
+.tablebtn {
     animation: none;
     text-decoration: none;
     color: black;
+    font-size: 1.2rem;
 }
 
-.bx-search:hover {
+.tablebtn:hover {
     color: #5EB1BF;
 }

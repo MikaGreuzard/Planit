@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/Equipe_ADMIN.css">
+    <link rel="stylesheet" href="../CSS/ADMIN_Tache.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -42,11 +42,11 @@
        <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Tache">
-         <i class='bx bx-task'></i>
-         <span class="links_name">Tâches</span>
+       <a href="../PAGES/ADMIN_Tache" class='Tache'>
+         <i class='bx bx-task Tache'></i>
+         <span class="links_name Tache">Tâches</span>
        </a>
-       <span class="tooltip">Tâches</span>
+       <span class="tooltip Tache">Tâches</span>
      </li>
      <li>
        <a href="#">
@@ -101,7 +101,7 @@
   <body>
     <main class="table">
         <section class="table__header">
-            <h1 class='TableTitre'>Equipe <?php echo $_SESSION['ServiceUtilisateur']?></h1>
+            <h1 class='TableTitre'>Tâches <?php echo $_SESSION['ServiceUtilisateur']?></h1>
             <div class="input-group">
                 <input type="search" placeholder="Rechercher...">
                 <i class='bx bx-search'></i>
@@ -113,35 +113,36 @@
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Prénom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Description <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Priorité <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Date début <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Date max <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Séléction <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Personne <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--Début du PHP (génére de l'html avec des print / echo)-->
                     <?php
-                    # Permet de géré les erreurs
-                        try {
-                            # Connexion à la base de donnée, on garde cette connexion dans une variable
-                            # sqlite est le type de base de donnée, ce qui suit après les : est la base de donnée (en local pour sqlite)
-                            $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+                      # Permet de gérer les erreurs
+                      try {
+                          # Connexion à la base de données, on garde cette connexion dans une variable
+                          # sqlite est le type de base de données, ce qui suit après les : est la base de données (en local pour sqlite)
+                          $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
 
-                            # Maintenant qu'on est connecté on récupère les données (table Demandes)
-                            # query permet d'executer une requete sql
-                            $Utilisateurs = $pdo->query("SELECT * FROM Utilisateur WHERE ServiceUtilisateur = '{$_SESSION['ServiceUtilisateur']}' AND AccesUtilisateur != 'ADMIN'");
-                            # On affiche les données de la base
-                            foreach($Utilisateurs as $Utilisateurs) {
-                                # On affiche les données de la base
-                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> <td> <a href='#'><i class='bx bx-search' ></i></a></td> </tr>";
+                          # Maintenant qu'on est connecté on récupère les données (table Demandes)
+                          # query permet d'exécuter une requête SQL
+                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.ServiceUtilisateur = '".$_SESSION['ServiceUtilisateur']."' AND Utilisateur.AccesUtilisateur != 'ADMIN'");                          
+                          # On affiche les données de la base
+                          foreach($Taches as $Tache) {
+                              # On affiche les données de la base
+                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td> <td> <a href='#'><i class='bx bxs-edit tablebtn'></i></a></td> <td> <a href='#'><i class='bx bx-x tablebtn'></i></a></td> </tr>";
                             }
-                        } catch (PDOException $e) {
-                            die($e);
-                        }
-
-
+                      } catch (PDOException $e) {
+                          die($e);
+                      }
                     ?>
                 </tbody>
             </table>

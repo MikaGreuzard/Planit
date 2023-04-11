@@ -42,7 +42,7 @@
        <span class="tooltip">Equipe</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Tache">
+       <a href="../PAGES/ADMIN_Tache.php">
          <i class='bx bx-task'></i>
          <span class="links_name">Tâches</span>
        </a>
