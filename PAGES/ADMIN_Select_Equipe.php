@@ -101,7 +101,37 @@
   <body>
     <main class="table">
         <section class="table__header">
-            <h1 class='TableTitre'>Tâches <?php echo $_SESSION['ServiceUtilisateur']?></h1>
+        <?php
+          # Vérification que la variable ID existe
+          if (isset($_GET["utilisateur"])) {
+            # Récupération de l'ID de l'utilisateur dans l'URL
+            $idUtilisateur = $_GET["utilisateur"];
+
+            # Connexion à la base de données SQLite
+            $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+
+            try {
+              # Requête SQL pour récupérer les tâches de l'utilisateur
+              $taches = $pdo->query("
+                SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur
+                FROM Tache
+                INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur
+                WHERE Utilisateur.IdUtilisateur = $idUtilisateur AND Utilisateur.AccesUtilisateur != 'ADMIN'
+              ");
+
+              # On récupère le nom et prénom de l'utilisateur
+              $utilisateur = $taches->fetch();
+              $nomUtilisateur = $utilisateur['NomUtilisateur'];
+              $prenomUtilisateur = $utilisateur['PrenomUtilisateur'];
+              
+              echo "<h1 class='TableTitre'>Tâches de $prenomUtilisateur $nomUtilisateur</h1>";
+            } catch (PDOException $e) {
+              die($e);
+            }
+          }
+        ?>
+
+
             <div class="input-group">
                 <input type="search" placeholder="Rechercher...">
                 <i class='bx bx-search'></i>
@@ -124,27 +154,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--Début du PHP (génére de l'html avec des print / echo)-->
-                    <?php
-                      # Permet de gérer les erreurs
-                      try {
-                          # Connexion à la base de données, on garde cette connexion dans une variable
-                          # sqlite est le type de base de données, ce qui suit après les : est la base de données (en local pour sqlite)
-                          $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+                <?php
+                  # Vérification que la variable ID existe
+                  if (isset($_GET["utilisateur"])) {
+                      # Récupération de l'ID de l'utilisateur dans l'URL
+                      $ID = $_GET["utilisateur"];
+                      # Connexion à la base de données SQLite
+                      $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
 
-                          # Maintenant qu'on est connecté on récupère les données (table Demandes)
-                          # query permet d'exécuter une requête SQL
-                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.ServiceUtilisateur = 'IT' AND Utilisateur.AccesUtilisateur != 'ADMIN'");
+                      try {
+                          # Requête SQL pour récupérer les tâches de l'utilisateur
+                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.IdUtilisateur = $ID AND Utilisateur.AccesUtilisateur != 'ADMIN'");
                           
                           # On affiche les données de la base
-                          foreach($Taches as $Tache) {
+                          foreach ($Taches as $Tache) {
                               # On affiche les données de la base
                               print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td> <td> <a href='#'><i class='bx bxs-edit tablebtn'></i></a></td> <td> <a href='#'><i class='bx bx-x tablebtn'></i></a></td> </tr>";
-                            }
+                          }
                       } catch (PDOException $e) {
                           die($e);
                       }
-                    ?>
+                  }
+                  # ...
+                ?>
                 </tbody>
             </table>
         </section>

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" href="../CSS/ADMIN_Equipe.css">
-    <title>Plan'it</title> <!-- Titre de la page -->
+    <title>Plan</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,8 +135,8 @@
                             # On affiche les données de la base
                             foreach($Utilisateurs as $Utilisateurs) {
                                 # On affiche les données de la base
-                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> <td> <a href='../PAGES/ADMIN_Select_Equipe.php'><i class='bx bx-search' ></i></a></td> </tr>";
-                            }
+                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> <td><a href='../PAGES/ADMIN_Select_Equipe.php?utilisateur=" . $Utilisateurs["IdUtilisateur"] . "'><i class='bx bx-search' ></i></a></td> </tr>";
+                              }
                         } catch (PDOException $e) {
                             die($e);
                         }
