@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="../CSS/Equipe_ADMIN.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -28,18 +28,18 @@
          <span class="tooltip">Rechercher</span>
       </li>
       <li>
-        <a href="#" class='Accueil'>
+        <a href="../PAGES/Index_ADMIN.php">
           <i class='bx bx-home-alt Accueil'></i>
           <span class="links_name Accueil">Accueil</span>
         </a>
          <span class="tooltip Accueil">Accueil</span>
       </li>
       <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Equipe</span>
+       <a href="../PAGES/Equipe_ADMIN.php" class='Equipe'>
+         <i class='bx bx-user Equipe' ></i>
+         <span class="links_name Equipe">Equipe</span>
        </a>
-       <span class="tooltip">Equipe</span>
+       <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
        <a href="#">
@@ -101,21 +101,10 @@
   <body>
     <main class="table">
         <section class="table__header">
-            <h1>Customer's Orders</h1>
+            <h1 class='TableTitre'>Equipe</h1>
             <div class="input-group">
-                <input type="search" placeholder="Search Data...">
-                <img src="images/search.png" alt="">
-            </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
-                </div>
+                <input type="search" placeholder="Rechercher...">
+                <i class='bx bx-search'></i>
             </div>
         </section>
         <section class="table__body">
@@ -123,104 +112,36 @@
                 <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Customer <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Location <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Order Date <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Amount <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Prénom <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Service <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Zinzu Chan Lee</td>
-                        <td> Seoul </td>
-                        <td> 17 Dec, 2022 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong> $128.90 </strong></td>
-                    </tr>
-                    <tr>
-                        <td> 2 </td>
-                        <td><img src="images/Jeet Saru.jpg" alt=""> Jeet Saru </td>
-                        <td> Kathmandu </td>
-                        <td> 27 Aug, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$5350.50</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 3</td>
-                        <td><img src="images/Sonal Gharti.jpg" alt=""> Sonal Gharti </td>
-                        <td> Tokyo </td>
-                        <td> 14 Mar, 2023 </td>
-                        <td>
-                            <p class="status shipped">Shipped</p>
-                        </td>
-                        <td> <strong>$210.40</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 4</td>
-                        <td><img src="images/Alson GC.jpg" alt=""> Alson GC </td>
-                        <td> New Delhi </td>
-                        <td> 25 May, 2023 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong>$149.70</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 5</td>
-                        <td><img src="images/Sarita Limbu.jpg" alt=""> Sarita Limbu </td>
-                        <td> Paris </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 6</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alex Gonley </td>
-                        <td> London </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 7</td>
-                        <td><img src="images/Alson GC.jpg" alt=""> Jeet Saru </td>
-                        <td> New York </td>
-                        <td> 20 May, 2023 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 8</td>
-                        <td><img src="images/Sarita Limbu.jpg" alt=""> Aayat Ali Khan </td>
-                        <td> Islamabad </td>
-                        <td> 30 Feb, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <strong>$149.70</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td><img src="images/Alex Gonley.jpg" alt=""> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
+                    <!--Début du PHP (génére de l'html avec des print / echo)-->
+                    <?php
+                    # Permet de géré les erreurs
+                        try {
+                            # Connexion à la base de donnée, on garde cette connexion dans une variable
+                            # sqlite est le type de base de donnée, ce qui suit après les : est la base de donnée (en local pour sqlite)
+                            $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+
+                            # Maintenant qu'on est connecté on récupère les données (table Demandes)
+                            # query permet d'executer une requete sql
+                            $Utilisateurs = $pdo->query("SELECT * FROM Utilisateur WHERE ServiceUtilisateur = '{$_SESSION['ServiceUtilisateur']}' AND AccesUtilisateur != 'ADMIN'");
+                            # On affiche les données de la base
+                            foreach($Utilisateurs as $Utilisateurs) {
+                                # On affiche les données de la base
+                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> </tr>";
+                            }
+                        } catch (PDOException $e) {
+                            die($e);
+                        }
+
+
+                    ?>
                 </tbody>
             </table>
         </section>
