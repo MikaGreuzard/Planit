@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" href="../CSS/ADMIN_Equipe.css">
-    <title>Plan</title> <!-- Titre de la page -->
+    <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,13 +111,13 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Prénom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Séléction <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Id <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></i></span></th>
+                        <th> Nom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Prénom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Email <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Service <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Séléction <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -147,7 +147,7 @@
             </table>
         </section>
     </main>
-    <script src='../JS/Equipe_ADMIN.js'></script>
+    <script src='../JS/ADMIN_Equipe.js'></script>
 </body>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>

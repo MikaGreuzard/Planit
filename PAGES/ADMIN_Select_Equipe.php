@@ -42,7 +42,7 @@
        <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Tache" class='Tache'>
+       <a href="../PAGES/ADMIN_Tache.php" class='Tache'>
          <i class='bx bx-task Tache'></i>
          <span class="links_name Tache">Tâches</span>
        </a>
@@ -141,16 +141,16 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Description <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Priorité <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Date début <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Date max <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Personne <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Id <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Nom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Description <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Priorité <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Date début <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Date max <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Personne <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Modifier <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Supprimer <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -180,8 +180,9 @@
                 </tbody>
             </table>
         </section>
+        <a href="#" class='btntest'>Créer une nouvelle tâche</a>
     </main>
-    <script src='../JS/Equipe_ADMIN.js'></script>
+    <script src='../JS/ADMIN_Tache.js'></script>
 </body>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>

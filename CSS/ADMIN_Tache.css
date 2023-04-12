@@ -637,13 +637,45 @@ thead th.active,tbody td.active {
 }
 
 
-.tablebtn {
+.bx-search, .tablebtn {
     animation: none;
     text-decoration: none;
     color: black;
-    font-size: 1.2rem;
 }
 
-.tablebtn:hover {
+.bx-search, .tablebtn:hover {
     color: #5EB1BF;
+}
+
+.bx-search {
+color: black;
+}
+
+.bx-search:hover {
+color: #5EB1BF;
+cursor: pointer;
+}
+
+.btntest {
+    background-color: #5EB1BF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    margin: 0px 0px 0px 0px;
+    bottom: 20px;
+    right: 20px;
+}
+
+.btntest:hover {
+    background-color: #6ecfe0;
+    color: white;
 }
