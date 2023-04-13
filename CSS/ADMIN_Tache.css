@@ -680,6 +680,17 @@ cursor: pointer;
     color: white;
 }
 
+.BoutonSupp {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+}
+
+.BoutonSupp:hover {
+  color: #5EB1BF;
+  cursor: pointer;
+}
+
 
 
 
@@ -815,9 +826,7 @@ form .fields .input-field{
   font-size: 14px;
   font-weight: 400;
 }
-form button:hover{
-  background-color: #265df2;
-}
+
 form button i,
 form .backBtn i{
   margin: 0 6px;

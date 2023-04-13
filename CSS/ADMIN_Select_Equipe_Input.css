@@ -376,12 +376,13 @@ body {
     align-items: center;
     column-gap: 50px;
     flex-wrap: wrap;
+    justify-content: center;
   }
   .form .gender {
     column-gap: 5px;
   }
   .gender input {
-    accent-color: rgb(130, 106, 251);
+    accent-color: #28536B;
   }
   .form :where(.gender input, .gender label) {
     cursor: pointer;
@@ -410,10 +411,13 @@ body {
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: rgb(130, 106, 251);
+    background-color: #c2c2c2;
+    color: #616161;
+    font-weight: bold;
   }
   .form button:hover {
-    background: rgb(88, 56, 250);
+    background-color: #28536B;
+    color: #fff;
   }
   /*Responsive*/
   @media screen and (max-width: 500px) {
@@ -424,3 +428,7 @@ body {
       row-gap: 15px;
     }
   }
+
+.AjouterBtn {
+    border-radius: 6px;
+}

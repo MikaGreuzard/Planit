@@ -109,67 +109,49 @@
   <section class="home-section">
   <body>
     <section class="container">
-    <header>Ajouter une tâche à <?php echo $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . ' ' . $_SESSION['utilisateur']['IdUtilisateur']; ?></header>
-      <form action="#" class="form">
+    <header>Ajouter une tâche à <?php echo $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'];?></header>
+      <form action="../PHP/ADMIN_Select_Equipe_Input_Config.php" method="post" class="form">
         <div class="input-box">
           <label>Nom & Prénom</label>
           <input type="text" placeholder="Enter full name" value="<?php echo $_SESSION['utilisateur']['PrenomUtilisateur']. ' ' . $_SESSION['utilisateur']['NomUtilisateur']; ?>" readonly required />
         </div>
 
         <div class="input-box">
-          <label>Email Address</label>
-          <input type="text" placeholder="Enter email address" required />
+          <label>Nom de la tâche</label>
+          <input name="NomTache" type="text" placeholder="Enter email address" required />
         </div>
 
-        <div class="column">
-          <div class="input-box">
-            <label>Phone Number</label>
-            <input type="number" placeholder="Enter phone number" required />
-          </div>
-          <div class="input-box">
-            <label>Birth Date</label>
-            <input type="date" placeholder="Enter birth date" required />
-          </div>
+        <div class="input-box">
+          <label>Description de la tâche</label>
+          <input name="DescriptionTache" type="text" placeholder="Enter email address" required />
         </div>
+
         <div class="gender-box">
-          <h3>Gender</h3>
+          <h3>Priorité</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender" checked />
-              <label for="check-male">male</label>
+              <input name="PrioriteTache" type="radio" id="check-male" value="1"  checked />
+              <label for="check-male">1</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender" />
-              <label for="check-female">Female</label>
+              <input name="PrioriteTache" type="radio" id="check-female" value="1"  />
+              <label for="check-female">2</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-other" name="gender" />
-              <label for="check-other">prefer not to say</label>
+              <input name="PrioriteTache" type="radio" id="check-other" value="1"  />
+              <label for="check-other">3</label>
             </div>
           </div>
         </div>
-        <div class="input-box address">
-          <label>Address</label>
-          <input type="text" placeholder="Enter street address" required />
-          <input type="text" placeholder="Enter street address line 2" required />
-          <div class="column">
-            <div class="select-box">
-              <select>
-                <option hidden>Country</option>
-                <option>America</option>
-                <option>Japan</option>
-                <option>India</option>
-                <option>Nepal</option>
-              </select>
-            </div>
-            <input type="text" placeholder="Enter your city" required />
-          </div>
-          <div class="column">
-            <input type="text" placeholder="Enter your region" required />
-            <input type="number" placeholder="Enter postal code" required />
-          </div>
+        <div class="input-box">
+            <label>Date de début</label>
+            <input name="DateDebutTache" type="date" placeholder="Enter birth date" required />
         </div>
-        <button>Submit</button>
+        <div class="input-box">
+            <label>Date d'échéance</label>
+            <input name="DateMaxTache" type="date" placeholder="Enter birth date" required />
+        </div>
+        <button class='AjouterBtn'>Ajouter</button>
       </form>
     </section>
   </body>
