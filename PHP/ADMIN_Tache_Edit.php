@@ -1,14 +1,18 @@
 <?php
-  session_start();
-  if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
-    $_SESSION['utilisateur']['NomUtilisateur'] = '';
-  }
-  if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
-    $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
-  }
-    if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
-        $_SESSION['utilisateur']['StatutUtilisateur'] = '';
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+    if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
+        $_SESSION['utilisateur']['NomUtilisateur'] = '';
+      }
+      if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
+        $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
+      }
+        if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
+            $_SESSION['utilisateur']['StatutUtilisateur'] = '';
+        }
     }
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -129,6 +133,7 @@
         echo "<h1 class='Titre1'>Modification tâche ID : $ID </h1>";
         $result = $pdo->query($query);
         $tache = $result->fetch();
+        $pdo = null;
     
     }    
     ?>
@@ -196,6 +201,7 @@ if (isset($_POST["validerModif"])) {
 
     // Mise à jour des informations dans la base de données
     // Mise à jour de la ligne correspondant à l'ID avec les nouvelles informations
+    $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
     $query = "UPDATE Tache SET NomTache = :NomTache, DescriptionTache = :DescriptionTache, PrioriteTache = :PrioriteTache, DateDebutTache = :DateDebutTache, DateMaxTache = :DateMaxTache, StatutTache = :StatutTache WHERE IDTache = :ID";
     $stmt = $pdo->prepare($query);
     $result = $stmt->execute([
@@ -208,9 +214,11 @@ if (isset($_POST["validerModif"])) {
         ":ID" => $ID,
     ]);
 
-    // Redirection vers la page Demandes.php
-    header("Location: ../PAGES/ADMIN_Tache.php");
-    exit;
+    // Redirection vers la page ADMIN_Tache.php
+    header("Location: ../PAGES/ADMIN_Equipe.php");
+    exit();
+
+
 }
 ?>
   </body>
