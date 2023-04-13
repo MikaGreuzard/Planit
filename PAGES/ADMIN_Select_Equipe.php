@@ -1,5 +1,6 @@
 <?php
   session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -123,6 +124,9 @@
               $utilisateur = $taches->fetch();
               $nomUtilisateur = $utilisateur['NomUtilisateur'];
               $prenomUtilisateur = $utilisateur['PrenomUtilisateur'];
+              $_SESSION['utilisateur']['NomUtilisateur'] = $nomUtilisateur;
+              $_SESSION['utilisateur']['PrenomUtilisateur'] = $prenomUtilisateur;
+              $_SESSION['utilisateur']['IdUtilisateur'] = $idUtilisateur;
               
               echo "<h1 class='TableTitre'>Tâches de $prenomUtilisateur $nomUtilisateur</h1>";
             } catch (PDOException $e) {
@@ -180,7 +184,7 @@
                 </tbody>
             </table>
         </section>
-        <a href="#" class='btntest'>Créer une nouvelle tâche</a>
+        <a href="../PAGES/ADMIN_Select_Equipe_Input.php" class='btntest'>Nouvelle tâche</a>
     </main>
     <script src='../JS/ADMIN_Tache.js'></script>
 </body>
