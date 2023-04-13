@@ -414,9 +414,10 @@ body {
     background-color: #c2c2c2;
     color: #616161;
     font-weight: bold;
+    transition-duration: 0.4s;
   }
   .form button:hover {
-    background-color: #28536B;
+    background-color: #57B88B;
     color: #fff;
   }
   /*Responsive*/
@@ -431,4 +432,11 @@ body {
 
 .AjouterBtn {
     border-radius: 6px;
+    transition-duration: 0.4s;
+}
+
+
+.AjouterBtn:hover {
+    background-color: #57B88B;
+    color: #fff;
 }
