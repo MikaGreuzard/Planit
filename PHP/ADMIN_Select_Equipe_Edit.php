@@ -1,14 +1,9 @@
 <?php
+  // Supprimez tous les espaces, retours chariot ou autres sorties avant cette balise PHP
   session_start();
   if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
     $_SESSION['utilisateur']['NomUtilisateur'] = '';
   }
-  if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
-    $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
-  }
-    if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
-        $_SESSION['utilisateur']['StatutUtilisateur'] = '';
-    }
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +12,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/ADMIN_Select_Equipe_Input.css">
+    <link rel="stylesheet" href="../CSS/ADMIN_Select_Equipe_Edit.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -25,7 +20,7 @@
    </head>
 <body>
   <div class="sidebar">
-    <div class="logo-details">
+  <div class="logo-details">
     <i class='bx bxs-parking icon'></i>
         <div class="logo_name">Plan'it</div>
         <i class='bx bx-menu' id="btn" ></i>
@@ -106,10 +101,10 @@
       </li>
     </ul>
   </div>
+  </div>
 
-    
-
-    <?php
+  <section class="container">
+  <?php
     // Connexion à la base de données SQLite
     $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
 
@@ -120,43 +115,29 @@
         $result = $pdo->query($query);
         $row = $result->fetch();
         
-
-        // Affichage des champs d'entrée avec les informations récupérées
-        echo '  <section class="home-section">';
-            echo '  <section class="container"';
-            echo '  <section class="container">';
-            echo '<header>Ajouter une tâche à ' . $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . '</header>';
-            echo '<form method="post" class="FormulaireEdit">';
-                echo '<div class="input-box">';
-                    echo '<label>Nom & Prénom</label>';
-                    echo '<input type="text" placeholder="Enter full name" value="' . $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . '" readonly required />';
-                echo '</div>';
-                
+        echo '<header>Modification de la tâche de ' . $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . '</header>';
 
         echo "<form method='post' class='FormulaireEdit'>";
 
         echo "<input type='hidden' name='ID' value='$ID'>";
         
-        echo "<label for='NomRessource' class='TitreLabel'>Ressource : </label>";
+        echo "<label for='NomTache' class='TitreLabel'>NomTache : </label>";
         echo "<input type='text' id='NomTache' name='NomTache' class='text-input-NomTache' value='".$row["NomTache"]."'><br>";
 
-        echo "<label for='ReferenceRessource' class='TitreLabel'>Référence : </label>";
+        echo "<label for='DescriptionTache' class='TitreLabel'>DescriptionTache : </label>";
         echo "<input type='text' id='DescriptionTache' name='DescriptionTache' class='text-input-DescriptionTache' value='".$row["DescriptionTache"]."'><br>";
 
-        echo "<label for='QuantiteRessource' class='TitreLabel'>Quantité : </label>";
+        echo "<label for='PrioriteTache' class='TitreLabel'>PrioriteTache : </label>";
         echo "<input type='text' id='PrioriteTache' name='PrioriteTache' class='text-input-PrioriteTache' value='".$row["PrioriteTache"]."'><br>";
 
-        echo "<label for='PrixUniteRessource' class='TitreLabel'>Prix/Unité : </label>";
+        echo "<label for='DateDebutTache' class='TitreLabel'>DateDebutTache : </label>";
         echo "<input type='text' id='DateDebutTache' name='DateDebutTache' class='text-input-DateDebutTache' value='".$row["DateDebutTache"]."'><br>";
 
-        echo "<label for='PrixUniteRessource' class='TitreLabel'>Prix/Unité : </label>";
+        echo "<label for='DateMaxTache' class='TitreLabel'>DateMaxTache : </label>";
         echo "<input type='text' id='DateMaxTache' name='DateMaxTache' class='text-input-DateMaxTache' value='".$row["DateMaxTache"]."'><br>";
 
-        echo "<label for='PrixUniteRessource' class='TitreLabel'>Prix/Unité : </label>";
+        echo "<label for='StatutTache' class='TitreLabel'>StatutTache : </label>";
         echo "<input type='text' id='StatutTache' name='StatutTache' class='text-input-StatutTache' value='".$row["StatutTache"]."'><br>";
-
-        echo "<label for='PrixUniteRessource' class='TitreLabel'>Prix/Unité : </label>";
-        echo "<input type='text' id='IdUtilisateur' name='IdUtilisateur' class='text-input-IdUtilisateur' value='".$row["IdUtilisateur"]."'><br>";
 
         echo "<div class='conteneur-boutons'>";
         echo "<input type='submit' name='valider2' class='BoutonValider' value='Valider'>";
@@ -178,14 +159,48 @@
         $DateDebutTache = $_POST["DateDebutTache"];
         $DateMaxTache = $_POST["DateMaxTache"];
         $StatutTache = $_POST["StatutTache"];
-        $IdUtilisateur = $_POST["IdUtilisateur"];
 
         // Mise à jour des informations dans la base de données
         // Mise à jour de la ligne correspondant à l'ID avec les nouvelles informations
-        $query ="UPDATE Tache SET NomTache = '$NomTache', DescriptionTache = '$DescriptionTache', PrioriteTache = '$PrioriteTache', DateDebutTache = '$DateDebutTache', DateMaxTache = '$DateMaxTache', StatutTache = '$StatutTache', IdUtilisateur = '$IdUtilisateur' WHERE IdTache = $ID";
+        $query ="UPDATE Tache SET NomTache = '$NomTache', DescriptionTache = '$DescriptionTache', PrioriteTache = '$PrioriteTache', DateDebutTache = '$DateDebutTache', DateMaxTache = '$DateMaxTache', StatutTache = '$StatutTache' WHERE IdTache = $ID";
         $result = $pdo->query($query);
 
         // Redirection vers la page Demandes.php
-        header("Location: ../PAGES/ADMIN_Select_Equipe.php?utilisateur=" . $_SESSION['utilisateur']['IdUtilisateur'] . "");
+        echo "<script> window.location.replace('../PAGES/ADMIN_Select_Equipe.php?utilisateur=" . $_SESSION['utilisateur']['IdUtilisateur'] . "');</script>";
     }
 ?>
+    </div>  
+  </section>
+
+  <div class='text2'>
+        Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
+  </div>
+
+  <script>
+      let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+
+  </script>
+
+</body>
+</html>

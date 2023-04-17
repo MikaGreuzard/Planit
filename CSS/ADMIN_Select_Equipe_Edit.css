@@ -404,12 +404,15 @@ body {
   .form button {
     height: 55px;
     width: 100%;
+    color: #fff;
     font-size: 1rem;
     font-weight: 400;
     margin-top: 30px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    background-color: #c2c2c2;
+    color: #616161;
     font-weight: bold;
     transition-duration: 0.4s;
   }
@@ -432,36 +435,119 @@ body {
     }
   }
 
-.AjouterBtn {
-    border-radius: 6px;
-    transition-duration: 0.4s;
-    background-color: #57B88B;
-    color: #fff;
+
+
+
+
+
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 .4rem .8rem #0005;
+}
 
-.AjouterBtn:hover {
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+
+.FormulaireEdit {
+  margin-top: 30px;
+}
+
+.FormulaireEdit .TitreLabel {
+  color: #333;
+}
+
+.FormulaireEdit .text-input-NomTache,
+.FormulaireEdit .text-input-DescriptionTache,
+.FormulaireEdit .text-input-PrioriteTache,
+.FormulaireEdit .text-input-DateDebutTache,
+.FormulaireEdit .text-input-DateMaxTache,
+.FormulaireEdit .text-input-StatutTache,
+.FormulaireEdit .text-input-IdUtilisateur {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.FormulaireEdit .text-input-NomTache:focus,
+.FormulaireEdit .text-input-DescriptionTache:focus,
+.FormulaireEdit .text-input-PrioriteTache:focus,
+.FormulaireEdit .text-input-DateDebutTache:focus,
+.FormulaireEdit .text-input-DateMaxTache:focus,
+.FormulaireEdit .text-input-StatutTache:focus,
+.FormulaireEdit .text-input-IdUtilisateur:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.FormulaireEdit .conteneur-boutons {
+  margin-top: 15px;
+}
+
+.FormulaireEdit .BoutonValider {
+  height: 55px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  border-radius: 6px;
+  background-color: #57B88B;
+  color: #fff;
+}
+
+.FormulaireEdit .BoutonValider:hover {
   background-color: #2ecc71;
   color: #fff;
-  box-shadow: 0 0 10px #2ecc71; /* Ajout d'une ombre lors du survol */
+  box-shadow: 0 0 10px #2ecc71;
 }
 
-.AnnulerBtn {
-  border-radius: 6px;
+.FormulaireEdit .BoutonAnnuler {
+  height: 55px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
   transition-duration: 0.4s;
+  border-radius: 6px;
   background-color: #DC5563;
   color: #fff;
+  margin-top: 15px;
 }
 
-.AnnulerBtn:hover {
+.FormulaireEdit .BoutonAnnuler:hover {
   background-color: #f44336;
   color: #fff;
-  box-shadow: 0 0 10px #f44336; /* Ajout d'une ombre lors du survol */
+  box-shadow: 0 0 10px #f44336;
 }
-
-
-
-
-
-
 
