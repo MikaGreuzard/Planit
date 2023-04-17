@@ -1,24 +1,112 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['utilisateur']['IdUtilisateur'])) {
-        $_SESSION['utilisateur']['IdUtilisateur'] = '';
+  session_start();
+  if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
+    $_SESSION['utilisateur']['NomUtilisateur'] = '';
+  }
+  if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
+    $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
+  }
+    if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
+        $_SESSION['utilisateur']['StatutUtilisateur'] = '';
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta http-equiv="refresh" content="5"> -->
-    <title>Plan'it</title>
-    <link rel="stylesheet" href="../CSS/RessourcesEdit.css">
-    <link rel="shortcut icon" href="../Assets/Logo.png">
-    <!--==================== UNICONS ====================-->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
-</head>
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" href="../CSS/ADMIN_Select_Equipe_Input.css">
+    <title>Plan'it</title> <!-- Titre de la page -->
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 <body>
+  <div class="sidebar">
+    <div class="logo-details">
+    <i class='bx bxs-parking icon'></i>
+        <div class="logo_name">Plan'it</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+          <i class='bx bx-search' ></i>
+         <input type="text" placeholder="Rechercher...">
+         <span class="tooltip">Rechercher</span>
+      </li>
+      <li>
+        <a href="../PAGES/ADMIN_Index.php">
+          <i class='bx bx-home-alt Accueil'></i>
+          <span class="links_name Accueil">Accueil</span>
+        </a>
+         <span class="tooltip Accueil">Accueil</span>
+      </li>
+      <li>
+       <a href="../PAGES/ADMIN_Equipe.php" class='Equipe'>
+         <i class='bx bx-user Equipe' ></i>
+         <span class="links_name Equipe">Equipe</span>
+       </a>
+       <span class="tooltip Equipe">Equipe</span>
+     </li>
+     <li>
+       <a href="../PAGES/ADMIN_Tache.php" class='Tache'>
+         <i class='bx bx-task Tache'></i>
+         <span class="links_name Tache">Tâches</span>
+       </a>
+       <span class="tooltip Tache">Tâches</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-pie-chart-alt-2' ></i>
+         <span class="links_name">Analyses</span>
+       </a>
+       <span class="tooltip">Analyses</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-folder' ></i>
+         <span class="links_name">Archives</span>
+       </a>
+       <span class="tooltip">Archives</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-folder-plus'></i>
+         <span class="links_name">Boite à idée</span>
+       </a>
+       <span class="tooltip">Boite à idée</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-question-mark'></i>
+         <span class="links_name">Informations</span>
+       </a>
+       <span class="tooltip">Informations</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-cog' ></i>
+         <span class="links_name">Réglages</span>
+       </a>
+       <span class="tooltip">Réglages</span>
+     </li>
+     <li class="profile no-animation">
+        <div class="profile-details">
+          <!--<img src="profile.jpg" alt="profileImg">-->
+          <div class="name_job">
+          <div class="name"><?php echo isset($_SESSION['PrenomUtilisateur']) && isset($_SESSION['NomUtilisateur']) ? $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur'] : ''; ?></div>
+          <div class="job"><?php echo isset($_SESSION['StatutUtilisateur']) ? $_SESSION['StatutUtilisateur'] : ''; ?></div>
+          </div>
+        </div>
+        <a href="../PAGES/Login.php" class='TEST'>
+          <i class='bx bx-log-out' id="log_out"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
     
 
     <?php
@@ -27,8 +115,6 @@
 
     if (isset($_GET["ID"])) {
         $ID = $_GET["ID"];
-        echo "<h1 class='Titre1'>Modification ID : $ID </h1>";
-
         // Récupération des informations liées à l'ID
         $query = "SELECT * FROM Tache WHERE IdTache = $ID";
         $result = $pdo->query($query);
@@ -36,6 +122,17 @@
         
 
         // Affichage des champs d'entrée avec les informations récupérées
+        echo '  <section class="home-section">';
+            echo '  <section class="container"';
+            echo '  <section class="container">';
+            echo '<header>Ajouter une tâche à ' . $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . '</header>';
+            echo '<form method="post" class="FormulaireEdit">';
+                echo '<div class="input-box">';
+                    echo '<label>Nom & Prénom</label>';
+                    echo '<input type="text" placeholder="Enter full name" value="' . $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . '" readonly required />';
+                echo '</div>';
+                
+
         echo "<form method='post' class='FormulaireEdit'>";
 
         echo "<input type='hidden' name='ID' value='$ID'>";

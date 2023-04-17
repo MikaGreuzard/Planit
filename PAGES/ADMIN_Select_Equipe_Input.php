@@ -106,6 +106,8 @@
       </li>
     </ul>
   </div>
+
+
   <section class="home-section">
   <body>
     <section class="container">
@@ -152,6 +154,7 @@
             <input name="DateMaxTache" type="date" placeholder="Enter birth date" required />
         </div>
         <button class='AjouterBtn'>Ajouter</button>
+        <button type="button" class="AjouterBtn">Annuler</button>
       </form>
     </section>
   </body>
