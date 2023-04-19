@@ -1,5 +1,14 @@
 <?php
   session_start();
+  if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
+    $_SESSION['utilisateur']['NomUtilisateur'] = '';
+  }
+  if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
+    $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
+  }
+    if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
+        $_SESSION['utilisateur']['StatutUtilisateur'] = '';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +17,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="../CSS/ADMIN_Select_Equipe_Input.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -28,25 +37,25 @@
          <span class="tooltip">Rechercher</span>
       </li>
       <li>
-        <a href="#" class='Accueil'>
+        <a href="../PAGES/ADMIN_Index.php">
           <i class='bx bx-home-alt Accueil'></i>
           <span class="links_name Accueil">Accueil</span>
         </a>
          <span class="tooltip Accueil">Accueil</span>
       </li>
-      <!-- <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Equipe</span>
+      <li>
+       <a href="../PAGES/ADMIN_Equipe.php" class='Equipe'>
+         <i class='bx bx-user Equipe' ></i>
+         <span class="links_name Equipe">Equipe</span>
        </a>
-       <span class="tooltip">Equipe</span>
-     </li> -->
+       <span class="tooltip Equipe">Equipe</span>
+     </li>
      <li>
-       <a href="../PAGES/USER_Tache.php">
-         <i class='bx bx-task'></i>
-         <span class="links_name">Tâches</span>
+       <a href="../PAGES/ADMIN_Tache.php" class='Tache'>
+         <i class='bx bx-task Tache'></i>
+         <span class="links_name Tache">Tâches</span>
        </a>
-       <span class="tooltip">Tâches</span>
+       <span class="tooltip Tache">Tâches</span>
      </li>
      <!-- <li>
        <a href="#">
@@ -97,11 +106,60 @@
       </li>
     </ul>
   </div>
+
+
   <section class="home-section">
-    <div class="text">Bienvenue sur Plan'it</div>
-      <div class='text3'>
-        <span class="Planit">Plan'it</span> simplifie la gestion des tâches en équipe. Planifiez, organisez et suivez l'avancement de vos projets en temps réel. Assignez des tâches, partagez des commentaires et des fichiers, et collaborez efficacement pour atteindre vos objectifs plus rapidement.
-      </div>
+  <body>
+    <section class="container">
+    <header>Ajouter une tâche à <?php echo $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'];?></header>
+      <form action="../PHP/USER_Tache_Input_Config.php" method="post" class="form">
+        <div class="input-box">
+          <label>Nom & Prénom</label>
+          <input type="text" placeholder="Enter full name" value="<?php echo $_SESSION['utilisateur']['PrenomUtilisateur']. ' ' . $_SESSION['utilisateur']['NomUtilisateur']; ?>" readonly required />
+        </div>
+
+        <div class="input-box">
+          <label>Nom de la tâche</label>
+          <input name="NomTache" type="text" placeholder="Nom de la tâche" required />
+        </div>
+
+        <div class="input-box">
+          <label>Description de la tâche</label>
+          <input name="DescriptionTache" type="text" placeholder="Description de la tâche" required />
+        </div>
+
+        <div class="gender-box">
+          <h3>Priorité</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input name="PrioriteTache" type="radio" id="check-male" value="1"  checked />
+              <label for="check-male">1</label>
+            </div>
+            <div class="gender">
+              <input name="PrioriteTache" type="radio" id="check-female" value="1"  />
+              <label for="check-female">2</label>
+            </div>
+            <div class="gender">
+              <input name="PrioriteTache" type="radio" id="check-other" value="1"  />
+              <label for="check-other">3</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box">
+            <label>Date de début</label>
+            <input name="DateDebutTache" type="date" placeholder="Enter birth date" required />
+        </div>
+        <div class="input-box">
+            <label>Date d'échéance</label>
+            <input name="DateMaxTache" type="date" placeholder="Enter birth date" required />
+        </div>
+        <button class='AjouterBtn'>Ajouter</button>
+        <button type="button" class="AnnulerBtn" onclick="window.location.href='../PAGES/USER_Tache.php?utilisateur=<?php echo $_SESSION['utilisateur']['IdUtilisateur']; ?>'">Annuler</button>
+      </form>
+    </section>
+  </body>
+    <!--<script src="script.js"></script>-->
+    </div>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
     </div>
