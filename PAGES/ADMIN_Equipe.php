@@ -48,7 +48,7 @@
        </a>
        <span class="tooltip">Tâches</span>
      </li>
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -82,7 +82,7 @@
          <span class="links_name">Réglages</span>
        </a>
        <span class="tooltip">Réglages</span>
-     </li>
+     </li> -->
      <li class="profile no-animation">
         <div class="profile-details">
           <!--<img src="profile.jpg" alt="profileImg">-->
@@ -111,13 +111,13 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Prénom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Séléction <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Id <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></i></span></th>
+                        <th> Nom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Prénom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Email <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Service <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Séléction <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -147,7 +147,7 @@
             </table>
         </section>
     </main>
-    <script src='../JS/Equipe_ADMIN.js'></script>
+    <script src='../JS/ADMIN_Equipe.js'></script>
 </body>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>

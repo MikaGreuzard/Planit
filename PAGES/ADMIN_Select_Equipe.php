@@ -1,6 +1,26 @@
 <?php
   session_start();
+  if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
+    $_SESSION['utilisateur']['NomUtilisateur'] = '';
+  }
+  if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
+    $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
+  }
+  if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
+    $_SESSION['utilisateur']['StatutUtilisateur'] = '';
+  }
+  if (isset($_SESSION['notification'])) {
+    echo "<div id='notification' class='notification'>{$_SESSION['notification']} <i id='delete-notification' class='bx bx-x delete-icon'></i></div>";
+    unset($_SESSION['notification']);
+  }
 ?>
+<script>
+  var deleteBtn = document.getElementById('delete-notification');
+  var notification = document.getElementById('notification');
+  deleteBtn.addEventListener('click', function() {
+    notification.classList.add('hide');
+  });
+</script>
 
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
@@ -42,13 +62,13 @@
        <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Tache" class='Tache'>
+       <a href="../PAGES/ADMIN_Tache.php" class='Tache'>
          <i class='bx bx-task Tache'></i>
          <span class="links_name Tache">Tâches</span>
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -82,7 +102,7 @@
          <span class="links_name">Réglages</span>
        </a>
        <span class="tooltip">Réglages</span>
-     </li>
+     </li> -->
      <li class="profile no-animation">
         <div class="profile-details">
           <!--<img src="profile.jpg" alt="profileImg">-->
@@ -123,6 +143,9 @@
               $utilisateur = $taches->fetch();
               $nomUtilisateur = $utilisateur['NomUtilisateur'];
               $prenomUtilisateur = $utilisateur['PrenomUtilisateur'];
+              $_SESSION['utilisateur']['NomUtilisateur'] = $nomUtilisateur;
+              $_SESSION['utilisateur']['PrenomUtilisateur'] = $prenomUtilisateur;
+              $_SESSION['utilisateur']['IdUtilisateur'] = $idUtilisateur;
               
               echo "<h1 class='TableTitre'>Tâches de $prenomUtilisateur $nomUtilisateur</h1>";
             } catch (PDOException $e) {
@@ -141,16 +164,16 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Description <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Priorité <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Date début <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Date max <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Statut <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Personne <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Id <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Nom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Description <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Priorité <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Date début <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Date max <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Personne <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Modifier <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Supprimer <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -169,7 +192,7 @@
                           # On affiche les données de la base
                           foreach ($Taches as $Tache) {
                               # On affiche les données de la base
-                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td> <td> <a href='#'><i class='bx bxs-edit tablebtn'></i></a></td> <td> <a href='#'><i class='bx bx-x tablebtn'></i></a></td> </tr>";
+                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td>                  <td> <a href='../PHP/ADMIN_Select_Equipe_Edit.php?ID=" . $Tache["IdTache"] . "' class='boutonModifier'><i class='bx bx-edit tablebtn'></i></i></a> </td>                   <td><form action='../PHP/ADMIN_Select_Equipe_Delete_Config.php' method='post'><input type='hidden' name='id' value=' " . $Tache["IdTache"] . "'><button type='submit' value='Supprimer' class='BoutonSupp'><i class='bx bx-x'></i></form></td>                 </tr>";
                           }
                       } catch (PDOException $e) {
                           die($e);
@@ -180,8 +203,9 @@
                 </tbody>
             </table>
         </section>
+        <a href="../PAGES/ADMIN_Select_Equipe_Input.php" class='btntest'>Nouvelle tâche</a>
     </main>
-    <script src='../JS/Equipe_ADMIN.js'></script>
+    <script src='../JS/ADMIN_Tache.js'></script>
 </body>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
@@ -210,6 +234,14 @@
      closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
    }
   }
+// Fonction pour masquer la notification après un délai de 5 secondes
+setTimeout(function() {
+  var notification = document.querySelector('.notification');
+  if (notification) {
+    notification.classList.add('hide');
+  }
+}, 5000);
   </script>
 </body>
+
 </html>

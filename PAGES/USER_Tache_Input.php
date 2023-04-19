@@ -1,5 +1,14 @@
 <?php
   session_start();
+  if (!isset($_SESSION['utilisateur']['NomUtilisateur'])) {
+    $_SESSION['utilisateur']['NomUtilisateur'] = '';
+  }
+  if (!isset($_SESSION['utilisateur']['PrenomUtilisateur'])) {
+    $_SESSION['utilisateur']['PrenomUtilisateur'] = '';
+  }
+    if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
+        $_SESSION['utilisateur']['StatutUtilisateur'] = '';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +17,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/ADMIN_Tache.css">
+    <link rel="stylesheet" href="../CSS/ADMIN_Select_Equipe_Input.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -97,57 +106,60 @@
       </li>
     </ul>
   </div>
+
+
   <section class="home-section">
   <body>
-    <main class="table">
-        <section class="table__header">
-            <h1 class='TableTitre'>Tâches <?php echo $_SESSION['ServiceUtilisateur']?></h1>
-            <div class="input-group">
-                <input type="search" placeholder="Rechercher...">
-                <i class='bx bx-search'></i>
-            </div>
-        </section>
-        <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
-                        <th> Id <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Nom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Description <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Priorité <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Date début <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Date max <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Personne <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--Début du PHP (génére de l'html avec des print / echo)-->
-                    <?php
-                      # Permet de gérer les erreurs
-                      try {
-                          # Connexion à la base de données, on garde cette connexion dans une variable
-                          # sqlite est le type de base de données, ce qui suit après les : est la base de données (en local pour sqlite)
-                          $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+    <section class="container">
+    <header>Ajouter une tâche à <?php echo $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'];?></header>
+      <form action="../PHP/USER_Tache_Input_Config.php" method="post" class="form">
+        <div class="input-box">
+          <label>Nom & Prénom</label>
+          <input type="text" placeholder="Enter full name" value="<?php echo $_SESSION['utilisateur']['PrenomUtilisateur']. ' ' . $_SESSION['utilisateur']['NomUtilisateur']; ?>" readonly required />
+        </div>
 
-                          # Maintenant qu'on est connecté on récupère les données (table Demandes)
-                          # query permet d'exécuter une requête SQL
-                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.ServiceUtilisateur = '".$_SESSION['ServiceUtilisateur']."' AND Utilisateur.AccesUtilisateur != 'ADMIN'");                          
-                          # On affiche les données de la base
-                          foreach($Taches as $Tache) {
-                              # On affiche les données de la base
-                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td>    </tr>";
-                            }
-                      } catch (PDOException $e) {
-                          die($e);
-                      }
-                    ?>
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <script src='../JS/ADMIN_Tache.js'></script>
-</body>
+        <div class="input-box">
+          <label>Nom de la tâche</label>
+          <input name="NomTache" type="text" placeholder="Nom de la tâche" required />
+        </div>
+
+        <div class="input-box">
+          <label>Description de la tâche</label>
+          <input name="DescriptionTache" type="text" placeholder="Description de la tâche" required />
+        </div>
+
+        <div class="gender-box">
+          <h3>Priorité</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input name="PrioriteTache" type="radio" id="check-male" value="1"  checked />
+              <label for="check-male">1</label>
+            </div>
+            <div class="gender">
+              <input name="PrioriteTache" type="radio" id="check-female" value="1"  />
+              <label for="check-female">2</label>
+            </div>
+            <div class="gender">
+              <input name="PrioriteTache" type="radio" id="check-other" value="1"  />
+              <label for="check-other">3</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box">
+            <label>Date de début</label>
+            <input name="DateDebutTache" type="date" placeholder="Enter birth date" required />
+        </div>
+        <div class="input-box">
+            <label>Date d'échéance</label>
+            <input name="DateMaxTache" type="date" placeholder="Enter birth date" required />
+        </div>
+        <button class='AjouterBtn'>Ajouter</button>
+        <button type="button" class="AnnulerBtn" onclick="window.location.href='../PAGES/USER_Tache.php?utilisateur=<?php echo $_SESSION['utilisateur']['IdUtilisateur']; ?>'">Annuler</button>
+      </form>
+    </section>
+  </body>
+    <!--<script src="script.js"></script>-->
+    </div>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
     </div>

@@ -34,21 +34,21 @@
         </a>
          <span class="tooltip Accueil">Accueil</span>
       </li>
-      <li>
+      <!-- <li>
        <a href="#">
          <i class='bx bx-user' ></i>
          <span class="links_name">Equipe</span>
        </a>
        <span class="tooltip">Equipe</span>
-     </li>
+     </li> -->
      <li>
-       <a href="#">
+       <a href="../PAGES/USER_Tache.php">
          <i class='bx bx-task'></i>
          <span class="links_name">Tâches</span>
        </a>
        <span class="tooltip">Tâches</span>
      </li>
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -82,7 +82,7 @@
          <span class="links_name">Réglages</span>
        </a>
        <span class="tooltip">Réglages</span>
-     </li>
+     </li> -->
      <li class="profile no-animation">
         <div class="profile-details">
           <!--<img src="profile.jpg" alt="profileImg">-->

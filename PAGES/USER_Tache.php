@@ -119,6 +119,8 @@
                         <th> Date max <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Personne <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Modifier <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -132,11 +134,11 @@
 
                           # Maintenant qu'on est connecté on récupère les données (table Demandes)
                           # query permet d'exécuter une requête SQL
-                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.ServiceUtilisateur = '".$_SESSION['ServiceUtilisateur']."' AND Utilisateur.AccesUtilisateur != 'ADMIN'");                          
+                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.PrenomUtilisateur = '".$_SESSION['PrenomUtilisateur']."' AND Utilisateur.NomUtilisateur != '".$_SESSION['PrenomUtilisateur']."'");                          
                           # On affiche les données de la base
                           foreach($Taches as $Tache) {
                               # On affiche les données de la base
-                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td>    </tr>";
+                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td> <td> <a href='../PHP/USER_Tache_Edit.php?ID=" . $Tache["IdTache"] . "' class='boutonModifier'><i class='bx bx-edit tablebtn'></i></i></a> </td>    </tr>";
                             }
                       } catch (PDOException $e) {
                           die($e);
@@ -145,6 +147,7 @@
                 </tbody>
             </table>
         </section>
+        <a href="../PAGES/USER_Tache_Input.php" class='btntest'>Nouvelle tâche</a>
     </main>
     <script src='../JS/ADMIN_Tache.js'></script>
 </body>
