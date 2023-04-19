@@ -6,7 +6,13 @@
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
-.sidebar{
+
+
+
+/* ============================== SIDEBAR ============================== */
+
+/* Style pour l'élément sidebar */
+.sidebar {
   position: fixed;
   left: 0;
   top: 0;
@@ -17,46 +23,60 @@
   z-index: 99;
   transition: all 0.5s ease;
 }
-.sidebar.open{
+
+/* Style pour l'élément sidebar ouvert */
+.sidebar.open {
   width: 250px;
 }
-.sidebar .logo-details{
+
+/* Style pour le logo et les détails dans la sidebar */
+.sidebar .logo-details {
   height: 60px;
   display: flex;
   align-items: center;
   position: relative;
 }
-.sidebar .logo-details .icon{
+
+/* Style pour l'icône dans les détails du logo */
+.sidebar .logo-details .icon {
   opacity: 0;
   transition: all 0.5s ease;
 }
-.sidebar .logo-details .logo_name{
+
+/* Style pour le nom du logo dans les détails du logo */
+.sidebar .logo-details .logo_name {
   color: #fff;
   font-size: 20px;
   font-weight: 600;
   opacity: 0;
   transition: all 0.5s ease;
 }
+
+/* Style pour l'icône et le nom du logo ouverts dans les détails du logo */
 .sidebar.open .logo-details .icon,
-.sidebar.open .logo-details .logo_name{
+.sidebar.open .logo-details .logo_name {
   opacity: 1;
 }
-.sidebar .logo-details #btn{
+
+/* Style pour le bouton dans les détails du logo */
+.sidebar .logo-details #btn {
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
   font-size: 22px;
-  transition: all 0.4s ease;
-  font-size: 23px;
   text-align: center;
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.sidebar.open .logo-details #btn{
+
+/* Style pour le bouton ouvert dans les détails du logo */
+.sidebar.open .logo-details #btn {
   text-align: right;
 }
-.sidebar i{
+
+/* Style pour l'icône dans la sidebar */
+.sidebar i {
   color: #fff;
   height: 60px;
   min-width: 50px;
@@ -64,16 +84,22 @@
   text-align: center;
   line-height: 60px;
 }
-.sidebar .nav-list{
+
+/* Style pour la liste de navigation dans la sidebar */
+.sidebar .nav-list {
   margin-top: 20px;
   height: 100%;
 }
-.sidebar li{
+
+/* Style pour les éléments de liste dans la liste de navigation */
+.sidebar li {
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
-.sidebar li .tooltip{
+
+/* Style pour l'infobulle dans les éléments de liste */
+.sidebar li .tooltip {
   position: absolute;
   top: -20px;
   left: calc(100% + 15px);
@@ -89,17 +115,23 @@
   pointer-events: none;
   transition: 0s;
 }
-.sidebar li:hover .tooltip{
+
+/* Style pour l'infobulle lorsqu'on survole les éléments de liste */
+.sidebar li:hover .tooltip {
   opacity: 1;
   pointer-events: auto;
   transition: all 0.4s ease;
   top: 50%;
   transform: translateY(-50%);
 }
-.sidebar.open li .tooltip{
+
+/* Style pour les infobulles dans les éléments de liste lorsqu'on ouvre la sidebar */
+.sidebar.open li .tooltip {
   display: none;
 }
-.sidebar input{
+
+/* Style pour les éléments input dans la sidebar */
+.sidebar input {
   font-size: 15px;
   color: #FFF;
   font-weight: 400;
@@ -112,11 +144,15 @@
   transition: all 0.5s ease;
   background: #5EB1BF;
 }
-.sidebar.open input{
+
+/* Style pour l'élément input ouvert dans la sidebar */
+.sidebar.open input {
   padding: 0 20px 0 50px;
   width: 100%;
 }
-.sidebar .bx-search{
+
+/* Style pour l'icône de recherche dans la sidebar */
+.sidebar .bx-search {
   position: absolute;
   top: 50%;
   left: 0;
@@ -125,15 +161,21 @@
   background: #5EB1BF;
   color: #FFF;
 }
-.sidebar.open .bx-search:hover{
+
+/* Style pour l'icône de recherche survolée lorsque la sidebar est ouverte */
+.sidebar.open .bx-search:hover {
   background: #5EB1BF;
   color: #FFF;
 }
-.sidebar .bx-search:hover{
+
+/* Style pour l'icône de recherche survolée lorsque la sidebar est fermée */
+.sidebar .bx-search:hover {
   background: #FFF;
   color: #28536B;
 }
-.sidebar li a:not(.TEST){
+
+/* Style pour les liens dans les éléments de liste de la sidebar, à l'exception des liens avec la classe .TEST */
+.sidebar li a:not(.TEST) {
   display: flex;
   height: 100%;
   width: 100%;
@@ -143,10 +185,14 @@
   transition: all 0.4s ease;
   background: #28536B;
 }
-.sidebar li a:hover{
+
+/* Style pour les liens survolés dans les éléments de liste de la sidebar */
+.sidebar li a:hover {
   background: #FFF;
 }
-.sidebar li a .links_name{
+
+/* Style pour le nom des liens dans les éléments de liste de la sidebar */
+.sidebar li a .links_name {
   color: #fff;
   font-size: 15px;
   font-weight: 400;
@@ -155,22 +201,33 @@
   pointer-events: none;
   transition: 0.4s;
 }
-.sidebar.open li a .links_name{
+
+/* Style pour le nom des liens ouverts dans les éléments de liste de la sidebar */
+.sidebar.open li a .links_name {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Style pour les icônes et les noms de liens survolés dans les éléments de liste de la sidebar */
 .sidebar li a:hover .links_name,
-.sidebar li a:hover i{
+.sidebar li a:hover i {
   transition: all 0.5s ease;
   color: #28536B;
 }
-.sidebar li i{
+
+/* Style pour les icônes dans les éléments de liste de la sidebar */
+.sidebar li i {
   height: 50px;
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;
 }
-.sidebar li.profile{
+
+
+
+
+/* Style pour l'élément de profil dans la sidebar */
+.sidebar li.profile {
   position: fixed;
   height: 60px;
   width: 78px;
@@ -181,32 +238,44 @@
   transition: all 0.5s ease;
   overflow: hidden;
 }
-.sidebar.open li.profile{
+
+/* Style pour l'élément de profil ouvert dans la sidebar */
+.sidebar.open li.profile {
   width: 250px;
 }
-.sidebar li .profile-details{
+
+/* Style pour les détails du profil dans l'élément de profil de la sidebar */
+.sidebar li .profile-details {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
 }
-.sidebar li img{
+
+/* Style pour l'image de profil dans l'élément de profil de la sidebar */
+.sidebar li img {
   height: 45px;
   width: 45px;
   object-fit: cover;
   border-radius: 6px;
   margin-right: 10px;
 }
+
+/* Style pour le nom et le travail dans l'élément de profil de la sidebar */
 .sidebar li.profile .name,
-.sidebar li.profile .job{
+.sidebar li.profile .job {
   font-size: 15px;
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
 }
-.sidebar li.profile .job{
+
+/* Style pour le travail dans l'élément de profil de la sidebar */
+.sidebar li.profile .job {
   font-size: 12px;
 }
-.sidebar .profile #log_out{
+
+/* Style pour le bouton de déconnexion dans l'élément de profil de la sidebar */
+.sidebar .profile #log_out {
   position: absolute;
   top: 50%;
   right: 0;
@@ -218,53 +287,82 @@
   border-radius: 0px;
   transition: all 0.5s ease;
 }
-.sidebar.open .profile #log_out{
+
+/* Style pour le bouton de déconnexion lorsque l'élément de profil est ouvert dans la sidebar */
+.sidebar.open .profile #log_out {
   width: 50px;
   background: none;
 }
 
-.sidebar.open ~ .home-section{
+/* Style pour la section d'accueil lorsqu'on ouvre la sidebar */
+.sidebar.open ~ .home-section {
   left: 250px;
   width: calc(100% - 250px);
 }
 
+/* Style pour les éléments de liste avec l'icône de tâche dans la sidebar */
+.Tache i {
+  background: #FFF;
+  color: #28536B;
+  }
 
-.home-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Ajout */
-  align-items: center; /* Ajout */
-  height: 100%;
-  text-align: center;
-  margin: 0 auto; /* Ajout */
+/* Style pour les éléments de liste avec l'icône de tâche survolés dans la sidebar */
+.sidebar .Tache li {
+  background: #fff;
+  color: #28536B;
+}
+
+/* Style pour les liens avec la classe .Tache dans la sidebar */
+.sidebar li a.Tache {
+  background: #FFF;
+  color: #28536B;
+}
+
+/* Style pour le nom des liens avec la classe .Tache dans la sidebar */
+.sidebar li a.Tache .links_name.Tache {
+  color: #28536B;
 }
 
 
+
+
+/* ============================== HOMESECTION ============================== */
+
+/* Style pour la section d'accueil */
+.home-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Style pour le texte de la section d'accueil */
 .home-section .text {
   color: #28536B;
   font-size: 6rem;
   font-weight: 500;
   margin: 18px 0;
-  white-space: nowrap; /* Ajout */
+  white-space: nowrap;
   margin-top: 10rem;
 }
 
+/* Style pour cacher les infobulles dans la sidebar sur les petits écrans */
 @media (max-width: 420px) {
-  .sidebar li .tooltip{
-    display: none;
-  }
+.sidebar li .tooltip{
+  display: none;
+}
 }
 
-.Tache i {
-  background: #FFF;
-  color: #28536B;
-}
-
+/* Style pour le texte "Connecté en tant que" */
 .ConnectAs {
   font-weight: bold;
   color: #28536B;
 }
 
+/* Style pour la deuxième ligne de texte */
 .text2 {
   color: #28536B;
   font-size: 1rem;
@@ -272,11 +370,13 @@
   margin: 18px;
   align-self: center;
   text-align: center;
-  position: absolute; /* Ajout */
-  bottom: 0; /* Ajout */
-  left: 50%; /* Ajout */
-  transform: translateX(-50%); /* Ajout */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
+/* Style pour la troisième ligne de texte */
 .text3 {
   color: #28536B;
   font-size: 2rem;
@@ -286,24 +386,12 @@
   margin-top: 8rem;
 }
 
+/* Style pour le texte "Planit" */
 .Planit {
   font-weight: bold;
 }
 
 
-.sidebar .Tache li  {
-  background: #fff;
-  color: #28536B;
-}
-
-.sidebar li a.Tache {
-  background: #FFF;
-  color: #28536B;
-}
-
-.sidebar li a.Tache .links_name.Tache {
-  color: #28536B;
-}
 
 
 
@@ -332,7 +420,9 @@
 
 
 
+/* ============================== TABLEAU ============================== */
 
+/* Définition de l'image d'arrière-plan et des styles de base du body */
 body {
   min-height: 100vh;
   background: url(images/html_table.jpg) center / cover;
@@ -341,18 +431,18 @@ body {
   align-items: center;
 }
 
+/* Styles du tableau principal */
 main.table {
   width: 80vw;
   height: 85vh;
   background-color: #28536B;
-
   backdrop-filter: blur(7px);
   box-shadow: 0 .4rem .8rem #0005;
   border-radius: .8rem;
-
   overflow: hidden;
 }
 
+/* Styles de l'en-tête du tableau */
 .table__header {
   width: 100%;
   height: 10%;
@@ -364,11 +454,13 @@ main.table {
   align-items: center;
 }
 
+/* Styles du titre du tableau */
 .TableTitre{
-    color: #fff;
-    font-size: 3rem;
+  color: #fff;
+  font-size: 3rem;
 }
 
+/* Styles du groupe de saisie de texte dans l'en-tête du tableau */
 .table__header .input-group {
   width: 35%;
   height: 100%;
@@ -383,17 +475,20 @@ main.table {
   transition: .2s;
 }
 
+/* Styles lorsqu'on passe la souris sur le groupe de saisie de texte */
 .table__header .input-group:hover {
   width: 45%;
   background-color: #fff8;
   box-shadow: 0 .1rem .4rem #0002;
 }
 
+/* Styles de l'icône de loupe dans le groupe de saisie de texte */
 .table__header .input-group img {
   width: 1.2rem;
   height: 1.2rem;
 }
 
+/* Styles de l'entrée de texte dans le groupe de saisie de texte */
 .table__header .input-group input {
   width: 100%;
   padding: 0 .5rem 0 .3rem;
@@ -402,6 +497,87 @@ main.table {
   outline: none;
 }
 
+
+
+
+/* FOND DE PAGE */
+body {
+  min-height: 100vh;
+  background: url(images/html_table.jpg) center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TABLEAU */
+main.table {
+  width: 80vw;
+  height: 85vh;
+  background-color: #28536B;
+
+  backdrop-filter: blur(7px);
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: .8rem;
+
+  overflow: hidden;
+}
+
+/* EN-TÊTE DU TABLEAU */
+.table__header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  padding: .8rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* TITRE DU TABLEAU */
+.TableTitre{
+  color: #fff;
+  font-size: 3rem;
+}
+
+/* ZONE DE RECHERCHE */
+.table__header .input-group {
+  width: 35%;
+  height: 100%;
+  background-color: #fff5;
+  padding: 0 .8rem;
+  border-radius: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: .2s;
+}
+
+/* ZONE DE RECHERCHE AU SURVOL */
+.table__header .input-group:hover {
+  width: 45%;
+  background-color: #fff8;
+  box-shadow: 0 .1rem .4rem #0002;
+}
+
+/* ICÔNE DE RECHERCHE */
+.table__header .input-group img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* CHAMP DE RECHERCHE */
+.table__header .input-group input {
+  width: 100%;
+  padding: 0 .5rem 0 .3rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+/* CORPS DU TABLEAU */
 .table__body {
   width: 95%;
   max-height: calc(89% - 1.6rem);
@@ -414,20 +590,30 @@ main.table {
   overflow: overlay;
 }
 
+/* BARRE DE DÉFILEMENT */
 .table__body::-webkit-scrollbar{
   width: 0.5rem;
   height: 0.5rem;
 }
 
+/* POUCES DE LA BARRE DE DÉFILEMENT */
 .table__body::-webkit-scrollbar-thumb{
   border-radius: .5rem;
   background-color: #0004;
   visibility: hidden;
 }
 
-.table__body:hover::-webkit-scrollbar-thumb{ 
+/* POUCES DE LA BARRE DE DÉFILEMENT AU SURVOL */
+.table__body:hover::-webkit-scrollbar-thumb{
   visibility: visible;
 }
+  
+
+
+
+
+
+
 
 table {
   width: 100%;
@@ -438,7 +624,6 @@ td img {
   height: 36px;
   margin-right: .5rem;
   border-radius: 50%;
-
   vertical-align: middle;
 }
 
@@ -466,6 +651,7 @@ tbody tr {
   transition: .5s ease-in-out var(--delay), background-color 0s;
 }
 
+/* Masquage de la ligne */
 tbody tr.hide {
   opacity: 0;
   transform: translateX(100%);
@@ -481,6 +667,7 @@ tbody tr td img {
   transition: .2s ease-in-out;
 }
 
+/* Masquage de la cellule */
 tbody tr.hide td,
 tbody tr.hide td p {
   padding: 0;
@@ -488,42 +675,24 @@ tbody tr.hide td p {
   transition: .2s ease-in-out .5s;
 }
 
+/* Masquage de l'image dans la cellule masquée */
 tbody tr.hide td img {
   width: 0;
   height: 0;
   transition: .2s ease-in-out .5s;
 }
 
-.status {
-  padding: .4rem 0;
-  border-radius: 2rem;
-  text-align: center;
-}
 
-.status.delivered {
-  background-color: #86e49d;
-  color: #006b21;
-}
 
-.status.cancelled {
-  background-color: #d893a3;
-  color: #b30021;
-}
-
-.status.pending {
-  background-color: #ebc474;
-}
-
-.status.shipped {
-  background-color: #6fcaea;
-}
-
+/* ================================= MEDIA QUERY ================================= */
 
 @media (max-width: 1000px) {
   td:not(:first-of-type) {
-      min-width: 12.1rem;
+    min-width: 12.1rem;
   }
 }
+
+/* ================================= TABLE HEADER ================================= */
 
 thead th span.icon-arrow {
   display: inline-block;
@@ -531,10 +700,8 @@ thead th span.icon-arrow {
   height: 1.3rem;
   border-radius: 50%;
   border: 1.4px solid transparent;
-  
   text-align: center;
   font-size: 1rem;
-  
   margin-left: .5rem;
   transition: .2s ease-in-out;
 }
@@ -556,129 +723,32 @@ thead th.asc span.icon-arrow{
   transform: rotate(180deg);
 }
 
-thead th.active,tbody td.active {
+thead th.active, tbody td.active {
   color: #5EB1BF;
 }
 
-.export__file {
-  position: relative;
-}
-
-.export__file .export__file-btn {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  background: #fff6 url(images/export.png) center / 80% no-repeat;
-  border-radius: 50%;
-  transition: .2s ease-in-out;
-}
-
-.export__file .export__file-btn:hover { 
-  background-color: #fff;
-  transform: scale(1.15);
-  cursor: pointer;
-}
-
-.export__file input {
-  display: none;
-}
-
-.export__file .export__file-options {
-  position: absolute;
-  right: 0;
-  
-  width: 12rem;
-  border-radius: .5rem;
-  overflow: hidden;
-  text-align: center;
-
-  opacity: 0;
-  transform: scale(.8);
-  transform-origin: top right;
-  
-  box-shadow: 0 .2rem .5rem #0004;
-  
-  transition: .2s;
-}
-
-.export__file input:checked + .export__file-options {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 100;
-}
-
-.export__file .export__file-options label{
-  display: block;
-  width: 100%;
-  padding: .6rem 0;
-  background-color: #f2f2f2;
-  
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  transition: .2s ease-in-out;
-}
-
-.export__file .export__file-options label:first-of-type{
-  padding: 1rem 0;
-  background-color: #86e49d !important;
-}
-
-.export__file .export__file-options label:hover{
-  transform: scale(1.05);
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.export__file .export__file-options img{
-  width: 2rem;
-  height: auto;
-}
-
+/* ==================================== ICONES ==================================== */
 
 .bx-search, .tablebtn {
-    animation: none;
-    text-decoration: none;
-    color: black;
+  animation: none;
+  text-decoration: none;
+  color: black;
 }
 
 .bx-search, .tablebtn:hover {
-    color: #5EB1BF;
+  color: #5EB1BF;
 }
 
 .bx-search {
-color: black;
+  color: black;
 }
 
 .bx-search:hover {
-color: #5EB1BF;
-cursor: pointer;
+  color: #5EB1BF;
+  cursor: pointer;
 }
 
-.btntest {
-    background-color: #c2c2c2;
-    color: #616161;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    position: absolute;
-    margin: 0px 0px 0px 0px;
-    bottom: 20px;
-    right: 20px;
-}
-
-.btntest:hover {
-    background-color: #6ecfe0;
-    color: white;
-}
+/* ==================================== BOUTON ==================================== */
 
 .BoutonSupp {
   border: none;
@@ -697,15 +767,56 @@ cursor: pointer;
 
 
 
+/* ============================== BOUTON AJOUTER UNE TACHE ============================== */
 
+.btntest {
+/* Apparence de base */
+  background-color: #c2c2c2;
+  color: #616161;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  display: inline-block;
 
+  /* Position */
+  text-align: center;
+  position: absolute;
+  margin: 0px 0px 0px 0px;
+  bottom: 20px;
+  right: 20px;
+}
 
+.btntest:hover {
+/* Apparence au survol */
+  background-color: #6ecfe0;
+  color: white;
+}
+
+/* Bouton de suppression de tâche */
+.BoutonSupp {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+}
+
+.BoutonSupp:hover {
+  color: #5EB1BF;
+  cursor: pointer;
+}
+
+/* Formulaire de création de tâche */
 .FormInput{
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .container{
   position: relative;
   max-width: 1500px;
@@ -716,12 +827,14 @@ cursor: pointer;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
+
 .container header{
   position: relative;
   font-size: 20px;
   font-weight: 600;
   color: #333;
 }
+
 .container header::before{
   content: "";
   position: absolute;
@@ -732,6 +845,7 @@ cursor: pointer;
   border-radius: 8px;
   background-color: #4070f4;
 }
+
 .container form{
   position: relative;
   margin-top: 16px;
@@ -739,21 +853,25 @@ cursor: pointer;
   background-color: #fff;
   overflow: hidden;
 }
+
 .container form .form{
   position: absolute;
   background-color: #fff;
   transition: 0.3s ease;
 }
+
 .container form .form.second{
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
 }
+
 form.secActive .form.second{
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
 }
+
 form.secActive .form.first{
   opacity: 0;
   pointer-events: none;
@@ -860,6 +978,16 @@ form .buttons button , .backBtn{
   }
 }
 
+.BoutonSupp {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+}
+
+.BoutonSupp:hover {
+  color: #5EB1BF;
+  cursor: pointer;
+}
 
 
 
@@ -867,11 +995,13 @@ form .buttons button , .backBtn{
 
 
 
+
+/* ============================== NOTIFICATION AJOUTER ============================== */
 
 .notification {
   position: fixed;
   top: 10px;
-  right: 10px;
+  right: -200px;
   background-color: #57B88B;
   color: white;
   padding: 10px 40px 10px 20px;
@@ -881,10 +1011,29 @@ form .buttons button , .backBtn{
   display: flex;
   align-items: center;
   border-radius: 5px;
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    right: -300px;
+  }
+  to {
+    right: 10px;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    right: 10px;
+  }
+  to {
+    right: -400px;
+  }
 }
 
 .notification.hide {
-  display: none;
+  animation: slide-out 0.5s ease-out forwards;
 }
 
 .notification .icon {
@@ -908,7 +1057,55 @@ form .buttons button , .backBtn{
 }
 
 
-.notification .delete-icon {
+
+
+/* ============================== NOTIFICATION ANNULER ============================== */
+
+.notificationAnnuler {
+  position: fixed;
+  top: 10px;
+  right: -200px;
+  background-color: #DC5563;
+  color: white;
+  padding: 10px 40px 10px 20px;
+  font-size: 18px;
+  z-index: 9999;
+  border-left: 5px solid #f44336;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    right: -300px;
+  }
+  to {
+    right: 10px;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    right: 10px;
+  }
+  to {
+    right: -400px;
+  }
+}
+
+.notificationAnnuler.hide {
+  animation: slide-out 0.5s ease-out forwards;
+}
+
+.notificationAnnuler .icon {
+  margin-right: 10px;
+  font-size: 24px;
+  color: white;
+}
+
+.notificationAnnuler .delete-icon {
   position: absolute;
   top: 50%;
   right: 10px;
@@ -918,6 +1115,6 @@ form .buttons button , .backBtn{
   cursor: pointer;
 }
 
-.notification .delete-icon:hover {
-  color: #2ecc71;
+.notificationAnnuler .delete-icon:hover {
+  color: #f44336;
 }
