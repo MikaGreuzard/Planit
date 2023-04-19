@@ -859,3 +859,65 @@ form .buttons button , .backBtn{
       width: 100%;
   }
 }
+
+
+
+
+
+
+
+
+
+.notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #57B88B;
+  color: white;
+  padding: 10px 40px 10px 20px;
+  font-size: 18px;
+  z-index: 9999;
+  border-left: 5px solid #2ecc71;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.notification.hide {
+  display: none;
+}
+
+.notification .icon {
+  margin-right: 10px;
+  font-size: 24px;
+  color: white;
+}
+
+.notification .delete-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notification .delete-icon:hover {
+  color: #2ecc71;
+}
+
+
+.notification .delete-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notification .delete-icon:hover {
+  color: #2ecc71;
+}

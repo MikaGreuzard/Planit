@@ -9,6 +9,8 @@
     if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
         $_SESSION['utilisateur']['StatutUtilisateur'] = '';
     }
+
+    $_SESSION['notification'] = "<i class='bx bxs-check-circle icon'></i>Votre tâche a bien été ajoutée !<i class='bx bx-x delete-icon'></i>";
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +59,7 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <!-- <li>
+     <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -91,7 +93,7 @@
          <span class="links_name">Réglages</span>
        </a>
        <span class="tooltip">Réglages</span>
-     </li> -->
+     </li>
      <li class="profile no-animation">
         <div class="profile-details">
           <!--<img src="profile.jpg" alt="profileImg">-->
