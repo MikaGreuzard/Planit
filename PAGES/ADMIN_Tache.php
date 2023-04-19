@@ -48,7 +48,7 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -82,7 +82,7 @@
          <span class="links_name">Réglages</span>
        </a>
        <span class="tooltip">Réglages</span>
-     </li>
+     </li> -->
      <li class="profile no-animation">
         <div class="profile-details">
           <!--<img src="profile.jpg" alt="profileImg">-->
@@ -119,8 +119,6 @@
                         <th> Date max <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Personne <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Modifier <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Supprimer <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,7 +136,7 @@
                           # On affiche les données de la base
                           foreach($Taches as $Tache) {
                               # On affiche les données de la base
-                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td>                            <td> <a href='../PHP/ADMIN_Tache_Edit.php?ID=" . $Tache["IdTache"] . "' class='boutonModifier'><i class='bx bxs-edit tablebtn'></i></i></a> </td>               <td><form action='../PHP/ADMIN_Tache_Delete.php' method='post'><input type='hidden' name='id' value=' " . $Tache["IdTache"] . "'><button type='submit' value='Supprimer' class='BoutonSupp'><i class='bx bx-x'></i></form> </tr>";
+                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td>    </tr>";
                             }
                       } catch (PDOException $e) {
                           die($e);

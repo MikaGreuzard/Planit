@@ -57,7 +57,7 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -91,7 +91,7 @@
          <span class="links_name">Réglages</span>
        </a>
        <span class="tooltip">Réglages</span>
-     </li>
+     </li> -->
      <li class="profile no-animation">
         <div class="profile-details">
           <!--<img src="profile.jpg" alt="profileImg">-->
