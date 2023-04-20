@@ -9,6 +9,9 @@
   if (!isset($_SESSION['utilisateur']['StatutUtilisateur'])) {
     $_SESSION['utilisateur']['StatutUtilisateur'] = '';
   }
+
+
+
   if (isset($_SESSION['notification'])) {
     echo "<div id='notification' class='notification'>{$_SESSION['notification']} <i id='delete-notification' class='bx bx-x delete-icon'></i></div>";
     unset($_SESSION['notification']);
@@ -17,6 +20,12 @@
 <script>
   var deleteBtn = document.getElementById('delete-notification');
   var notification = document.getElementById('notification');
+  deleteBtn.addEventListener('click', function() {
+    notification.classList.add('hide');
+  });
+
+  var deleteBtn = document.getElementById('delete-notification');
+  var notification = document.getElementById('notificationAnnuler');
   deleteBtn.addEventListener('click', function() {
     notification.classList.add('hide');
   });
@@ -237,6 +246,14 @@
 // Fonction pour masquer la notification après un délai de 5 secondes
 setTimeout(function() {
   var notification = document.querySelector('.notification');
+  if (notification) {
+    notification.classList.add('hide');
+  }
+}, 5000);
+
+// Fonction pour masquer la notification après un délai de 5 secondes
+setTimeout(function() {
+  var notification = document.querySelector('.notificationAnnuler');
   if (notification) {
     notification.classList.add('hide');
   }

@@ -13,6 +13,7 @@
     $DateMaxTache = date("d/m/Y", strtotime($DateMaxTache));
     $StatutTache = "En cours";
     $IdUtilisateur = $_SESSION['utilisateur']['IdUtilisateur'];
+    $_SESSION['notification'] = "<i class='bx bxs-check-circle icon'></i>Votre tâche a bien été ajoutée !<i class='bx bx-x delete-icon'></i>";
 
     try {
         $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");

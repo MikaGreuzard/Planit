@@ -10,7 +10,7 @@
         $_SESSION['utilisateur']['StatutUtilisateur'] = '';
     }
 
-    $_SESSION['notification'] = "<i class='bx bxs-check-circle icon'></i>Votre tâche a bien été ajoutée !<i class='bx bx-x delete-icon'></i>";
+    
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +59,7 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Analyses</span>
@@ -92,7 +92,7 @@
          <i class='bx bx-cog' ></i>
          <span class="links_name">Réglages</span>
        </a>
-       <span class="tooltip">Réglages</span>
+       <span class="tooltip">Réglages</span> -->
      </li>
      <li class="profile no-animation">
         <div class="profile-details">
@@ -156,7 +156,7 @@
             <input name="DateMaxTache" type="date" placeholder="Enter birth date" required />
         </div>
         <button class='AjouterBtn'>Ajouter</button>
-        <button type="button" class="AnnulerBtn" onclick="window.location.href='../PAGES/ADMIN_Select_Equipe.php?utilisateur=<?php echo $_SESSION['utilisateur']['IdUtilisateur']; ?>'">Annuler</button>
+        <button type="button" class="AnnulerBtn" onclick="window.location.href='../PHP/Notif_Annuler.php';">Annuler</button>
       </form>
     </section>
   </body>
