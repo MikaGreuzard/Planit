@@ -122,7 +122,7 @@
         echo "<input type='hidden' name='ID' value='$ID'>";
         
         echo "<label for='NomTache' class='TitreLabel'>NomTache : </label>";
-        echo "<input type='text' id='NomTache' name='NomTache' class='text-input-NomTache' value='".$row["NomTache"]."'><br>";
+        echo "<input type='text' id='NomTache' name='NomTache' class='text-input-NomTache' value='".$row["NomTache"]."' readonly><br>";
 
         echo "<label for='DescriptionTache' class='TitreLabel'>DescriptionTache : </label>";
         echo "<input type='text' id='DescriptionTache' name='DescriptionTache' class='text-input-DescriptionTache' value='".$row["DescriptionTache"]."'><br>";
