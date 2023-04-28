@@ -48,14 +48,14 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <!-- <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analyses</span>
-       </a>
-       <span class="tooltip">Analyses</span>
-     </li>
      <li>
+       <a href="../PAGES/ADMIN_Projet.php">
+         <i class='bx bx-spreadsheet' ></i>
+         <span class="links_name">Projet</span>
+       </a>
+       <span class="tooltip">Projet</span>
+     </li>
+     <!--<li>
        <a href="#">
          <i class='bx bx-folder' ></i>
          <span class="links_name">Archives</span>
@@ -119,29 +119,29 @@
                         <th> Date max <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Personne <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Projet <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--Début du PHP (génére de l'html avec des print / echo)-->
                     <?php
-                      # Permet de gérer les erreurs
-                      try {
-                          # Connexion à la base de données, on garde cette connexion dans une variable
-                          # sqlite est le type de base de données, ce qui suit après les : est la base de données (en local pour sqlite)
-                          $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+                        try {
+                            $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
 
-                          # Maintenant qu'on est connecté on récupère les données (table Demandes)
-                          # query permet d'exécuter une requête SQL
-                          $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur FROM Tache INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur WHERE Utilisateur.ServiceUtilisateur = '".$_SESSION['ServiceUtilisateur']."' AND Utilisateur.AccesUtilisateur != 'ADMIN'");                          
-                          # On affiche les données de la base
-                          foreach($Taches as $Tache) {
-                              # On affiche les données de la base
-                              print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td>    </tr>";
+                            $Taches = $pdo->query("SELECT Tache.*, Utilisateur.NomUtilisateur, Utilisateur.PrenomUtilisateur, Projet.NomProjet FROM Tache 
+                                INNER JOIN Utilisateur ON Tache.IdUtilisateur = Utilisateur.IdUtilisateur 
+                                LEFT JOIN Projet ON Tache.IdProjet = Projet.IdProjet 
+                                WHERE Utilisateur.ServiceUtilisateur = '".$_SESSION['ServiceUtilisateur']."' AND Utilisateur.AccesUtilisateur != 'ADMIN'");
+
+                            foreach($Taches as $Tache) {
+                                print "<tr><td>" . $Tache["IdTache"] . "</td> <td>" . $Tache["NomTache"] . "</td> <td>" . $Tache["DescriptionTache"] . "</td> <td>" . $Tache["PrioriteTache"] . "</td> <td>" . $Tache["DateDebutTache"] . "</td> <td>" . $Tache["DateMaxTache"] . "</td> <td>" . $Tache["StatutTache"] . "</td> <td>" . $Tache["PrenomUtilisateur"] . " " . $Tache["NomUtilisateur"] . "</td> <td>" . $Tache["NomProjet"] . "</td> </tr>";
                             }
-                      } catch (PDOException $e) {
-                          die($e);
-                      }
+                        } catch (PDOException $e) {
+                            die($e);
+                        }
                     ?>
+
+
                 </tbody>
             </table>
         </section>

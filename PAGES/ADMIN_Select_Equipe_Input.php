@@ -59,14 +59,14 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <!-- <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analyses</span>
-       </a>
-       <span class="tooltip">Analyses</span>
-     </li>
      <li>
+       <a href="../PAGES/ADMIN_Projet.php">
+         <i class='bx bx-spreadsheet' ></i>
+         <span class="links_name">Projet</span>
+       </a>
+       <span class="tooltip">Projet</span>
+     </li>
+     <!--<li>
        <a href="#">
          <i class='bx bx-folder' ></i>
          <span class="links_name">Archives</span>
@@ -147,6 +147,27 @@
             </div>
           </div>
         </div>
+        <div class="input-box">
+          <select name="Projet" placeholder="Projet" class="texte-input-Projet">
+          <?php
+                          try {
+                              # Connexion à la base de donnée, on garde cette connexion dans une variable
+                              # sqlite est le type de base de donnée, ce qui suit après les : est la base de donnée (en local pour sqlite)
+                              $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+
+                              # Maintenant qu'on est connecté on récupère les données (table ressource)
+                              # query permet d'executer une requete sql
+                              $Projets = $pdo->query("SELECT IdProjet FROM Projet");
+                              # On affiche les données de la base
+                              print "<option hidden selected disabled>Projet</option>";
+                              foreach($Projets as $Projet) {
+                                  print "<option value='".$Projet['IdProjet']."'>".$Projet['IdProjet']."</option>";
+                              }
+                          } catch (PDOException $e) {
+                              die($e);
+                          }    
+                      ?>
+          </div>
         <div class="input-box">
             <label>Date de début</label>
             <input name="DateDebutTache" type="date" placeholder="Enter birth date" required />

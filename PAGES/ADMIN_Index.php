@@ -48,14 +48,14 @@
        </a>
        <span class="tooltip">Tâches</span>
      </li>
-     <!-- <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analyses</span>
-       </a>
-       <span class="tooltip">Analyses</span>
-     </li>
      <li>
+       <a href="../PAGES/ADMIN_Projet.php">
+         <i class='bx bx-spreadsheet' ></i>
+         <span class="links_name">Projet</span>
+       </a>
+       <span class="tooltip">Projet</span>
+     </li>
+     <!--<li>
        <a href="#">
          <i class='bx bx-folder' ></i>
          <span class="links_name">Archives</span>

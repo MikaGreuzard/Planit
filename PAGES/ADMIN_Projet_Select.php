@@ -1,5 +1,21 @@
 <?php
   session_start();
+  # Permet de gérer les erreurs
+  try {
+    # Connexion à la base de données, on garde cette connexion dans une variable
+    # sqlite est le type de base de données, ce qui suit après les : est la base de données (en local pour sqlite)
+    $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+
+    # Maintenant qu'on est connecté on récupère les données (table Demandes)
+    # query permet d'exécuter une requête SQL
+    $stmt = $pdo->prepare("SELECT * FROM Tache WHERE IdProjet = :idProjet");
+    $stmt->bindParam(':idProjet', $_GET['ID']);
+    $stmt->execute();
+    $Taches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  } catch (PDOException $e) {
+    die($e);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +24,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/ADMIN_Equipe.css">
+    <link rel="stylesheet" href="../CSS/ADMIN_Tache.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -42,11 +58,11 @@
        <span class="tooltip Equipe">Equipe</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Tache.php">
-         <i class='bx bx-task'></i>
-         <span class="links_name">Tâches</span>
+       <a href="../PAGES/ADMIN_Tache.php" class='Tache'>
+         <i class='bx bx-task Tache'></i>
+         <span class="links_name Tache">Tâches</span>
        </a>
-       <span class="tooltip">Tâches</span>
+       <span class="tooltip Tache">Tâches</span>
      </li>
      <li>
        <a href="../PAGES/ADMIN_Projet.php">
@@ -101,53 +117,58 @@
   <body>
     <main class="table">
         <section class="table__header">
-            <h1 class='TableTitre'>Equipe <?php echo $_SESSION['ServiceUtilisateur']?></h1>
+        <?php $ID = isset($_GET["ID"]) ? intval($_GET["ID"]) : null; ?>
+        <h1 class='TableTitre'>Projet <?php echo $_SESSION['ServiceUtilisateur'].' - '.$pdo->query("SELECT NomProjet FROM Projet WHERE IdProjet = $ID")->fetchColumn(); ?></h1>
             <div class="input-group">
                 <input type="search" placeholder="Rechercher...">
                 <i class='bx bx-search'></i>
             </div>
         </section>
         <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
-                        <th> Id <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></i></span></th>
-                        <th> Nom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Prénom <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Email <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Statut <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Service <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                        <th> Séléction <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--Début du PHP (génére de l'html avec des print / echo)-->
-                    <?php
-                    # Permet de géré les erreurs
-                        try {
-                            # Connexion à la base de donnée, on garde cette connexion dans une variable
-                            # sqlite est le type de base de donnée, ce qui suit après les : est la base de donnée (en local pour sqlite)
-                            $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+        <table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Date début</th>
+      <th>Date fin</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php 
+$pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
 
-                            # Maintenant qu'on est connecté on récupère les données (table Demandes)
-                            # query permet d'executer une requete sql
-                            $Utilisateurs = $pdo->query("SELECT * FROM Utilisateur WHERE ServiceUtilisateur = '{$_SESSION['ServiceUtilisateur']}' AND AccesUtilisateur != 'ADMIN'");
-                            # On affiche les données de la base
-                            foreach($Utilisateurs as $Utilisateurs) {
-                                # On affiche les données de la base
-                                print "<tr><td>" . $Utilisateurs["IdUtilisateur"] . "</td> <td>" . $Utilisateurs["NomUtilisateur"] . "</td> <td>" . $Utilisateurs["PrenomUtilisateur"] . "</td> <td>" . $Utilisateurs["EmailUtilisateur"] . "</td> <td>" . $Utilisateurs["StatutUtilisateur"] . "</td> <td>" . $Utilisateurs["ServiceUtilisateur"] . "</td> <td><a href='../PAGES/ADMIN_Select_Equipe.php?utilisateur=" . $Utilisateurs["IdUtilisateur"] . "'><i class='bx bx-search' ></i></a></td> </tr>";
-                              }
-                        } catch (PDOException $e) {
-                            die($e);
-                        }
+if (isset($_GET["ID"])) {
+    $ID = intval($_GET["ID"]);
+    // Récupération des informations liées à l'ID
+    
+    $req = $pdo->prepare("SELECT * FROM Tache WHERE IdProjet = ?");
+    $req->execute(array($ID));
+
+    // if ($req->rowCount() > 0) {
+        while($Tache = $req->fetch(PDO::FETCH_ASSOC)) { ?>
+            <tr>
+                <td><?php echo $Tache['IdTache']; ?></td>
+                <td><?php echo $Tache['NomTache']; ?></td>
+                <td><?php echo $Tache['DescriptionTache']; ?></td>
+                <td><?php echo $Tache['DateDebutTache']; ?></td>
+                <td><?php echo $Tache['DateMaxTache']; ?></td>
+            </tr>
+        <?php }
+    // } else {
+    //     echo "Aucune tâche trouvée avec cet ID.";
+    // }
+}
+?>
 
 
-                    ?>
-                </tbody>
-            </table>
+  </tbody>
+</table>
+
         </section>
     </main>
-    <script src='../JS/ADMIN_Equipe.js'></script>
+    <script src='../JS/ADMIN_Tache.js'></script>
 </body>
       <div class='text2'>
         Vous êtes connecté en tant que <span class='ConnectAs'><?php echo $_SESSION['PrenomUtilisateur'] . ' ' . $_SESSION['NomUtilisateur']; ?></span>
