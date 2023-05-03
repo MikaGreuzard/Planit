@@ -34,11 +34,6 @@
     </div>
     <ul class="nav-list">
       <li>
-          <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Rechercher...">
-         <span class="tooltip">Rechercher</span>
-      </li>
-      <li>
         <a href="../PAGES/ADMIN_Index.php">
           <i class='bx bx-home-alt Accueil'></i>
           <span class="links_name Accueil">Accueil</span>
