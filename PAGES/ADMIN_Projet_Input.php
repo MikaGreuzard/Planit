@@ -55,11 +55,11 @@
        <span class="tooltip Tache">Tâches</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Projet.php">
-         <i class='bx bx-spreadsheet' ></i>
-         <span class="links_name">Projets</span>
+       <a href="../PAGES/ADMIN_Projet.php" class='Projet'>
+         <i class='bx bx-spreadsheet Projet' ></i>
+         <span class="links_name Projet">Projets</span>
        </a>
-       <span class="tooltip">Projets</span>
+       <span class="tooltip Projet">Projets</span>
      </li>
      <!--<li>
        <a href="#">

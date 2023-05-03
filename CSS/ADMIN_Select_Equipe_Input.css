@@ -255,7 +255,7 @@
   }
 }
 
-.Tache i {
+.Projet i {
   background: #FFF;
   color: #28536B;
 }
@@ -291,17 +291,17 @@
 }
 
 
-.sidebar .Tache li  {
+.sidebar .Projet li  {
   background: #fff;
   color: #28536B;
 }
 
-.sidebar li a.Tache {
+.sidebar li a.Projet {
   background: #FFF;
   color: #28536B;
 }
 
-.sidebar li a.Tache .links_name.Tache {
+.sidebar li a.Projet .links_name.Projet {
   color: #28536B;
 }
 
