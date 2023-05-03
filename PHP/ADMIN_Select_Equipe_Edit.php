@@ -112,33 +112,40 @@
         
         echo '<header>Modification de la tâche de ' . $_SESSION['utilisateur']['PrenomUtilisateur'] . ' ' . $_SESSION['utilisateur']['NomUtilisateur'] . '</header>';
 
-        echo "<form method='post' class='FormulaireEdit'>";
+echo "<form method='post' class='FormulaireEdit'>";
+echo "<input type='hidden' name='ID' value='$ID'>";
+echo "<label for='NomTache' class='TitreLabel'>NomTache : </label>";
+echo "<input type='text' id='NomTache' name='NomTache' class='text-input-NomTache' value='".$row["NomTache"]."' readonly><br>";
+echo "<label for='DescriptionTache' class='TitreLabel'>DescriptionTache : </label>";
+echo "<input type='text' id='DescriptionTache' name='DescriptionTache' class='text-input-DescriptionTache' value='".$row["DescriptionTache"]."'><br>";
+echo "<label for='PrioriteTache' class='TitreLabel'>PrioriteTache : </label>";
+echo "<input type='text' id='PrioriteTache' name='PrioriteTache' class='text-input-PrioriteTache' value='".$row["PrioriteTache"]."'><br>";
+echo "<label for='Projet' class='TitreLabel'>Projet : </label>";
+echo "<select name='Projet' id='Projet' class='texte-input-Projet'>";
+echo "<option hidden selected disabled>Sélection d'un projet (Facultatif)</option>";
+try {
+  $pdo = new PDO("sqlite:../DATABASE/bdd.sqlite");
+  $Projets = $pdo->query("SELECT IdProjet, NomProjet FROM Projet");
+  foreach($Projets as $Projet) {
+    echo "<option value='".$Projet['IdProjet']."'>".$Projet['NomProjet']."</option>";
+  }
+} catch (PDOException $e) {
+  die($e);
+}
+echo "</select><br>";
 
-        echo "<input type='hidden' name='ID' value='$ID'>";
-        
-        echo "<label for='NomTache' class='TitreLabel'>NomTache : </label>";
-        echo "<input type='text' id='NomTache' name='NomTache' class='text-input-NomTache' value='".$row["NomTache"]."' readonly><br>";
+echo "<label for='DateDebutTache' class='TitreLabel'>DateDebutTache : </label>";
+echo "<input type='text' id='DateDebutTache' name='DateDebutTache' class='text-input-DateDebutTache' value='".$row["DateDebutTache"]."'><br>";
+echo "<label for='DateMaxTache' class='TitreLabel'>DateMaxTache : </label>";
+echo "<input type='text' id='DateMaxTache' name='DateMaxTache' class='text-input-DateMaxTache' value='".$row["DateMaxTache"]."'><br>";
+echo "<label for='StatutTache' class='TitreLabel'>StatutTache : </label>";
+echo "<input type='text' id='StatutTache' name='StatutTache' class='text-input-StatutTache' value='".$row["StatutTache"]."'><br>";
+echo "<div class='conteneur-boutons'>";
+echo "<input type='submit' name='valider2' class='BoutonValider' value='Valider'>";
+echo "<input type='button' name='annuler' class='BoutonAnnuler' value='Annuler' onclick='window.location.href=\"../PAGES/ADMIN_Select_Equipe.php?utilisateur=" . $_SESSION['utilisateur']['IdUtilisateur'] . "\";'>";
+echo "</div>";
+echo "</form>";
 
-        echo "<label for='DescriptionTache' class='TitreLabel'>DescriptionTache : </label>";
-        echo "<input type='text' id='DescriptionTache' name='DescriptionTache' class='text-input-DescriptionTache' value='".$row["DescriptionTache"]."'><br>";
-
-        echo "<label for='PrioriteTache' class='TitreLabel'>PrioriteTache : </label>";
-        echo "<input type='text' id='PrioriteTache' name='PrioriteTache' class='text-input-PrioriteTache' value='".$row["PrioriteTache"]."'><br>";
-
-        echo "<label for='DateDebutTache' class='TitreLabel'>DateDebutTache : </label>";
-        echo "<input type='text' id='DateDebutTache' name='DateDebutTache' class='text-input-DateDebutTache' value='".$row["DateDebutTache"]."'><br>";
-
-        echo "<label for='DateMaxTache' class='TitreLabel'>DateMaxTache : </label>";
-        echo "<input type='text' id='DateMaxTache' name='DateMaxTache' class='text-input-DateMaxTache' value='".$row["DateMaxTache"]."'><br>";
-
-        echo "<label for='StatutTache' class='TitreLabel'>StatutTache : </label>";
-        echo "<input type='text' id='StatutTache' name='StatutTache' class='text-input-StatutTache' value='".$row["StatutTache"]."'><br>";
-
-        echo "<div class='conteneur-boutons'>";
-        echo "<input type='submit' name='valider2' class='BoutonValider' value='Valider'>";
-        echo "<input type='button' name='annuler' class='BoutonAnnuler' value='Annuler' onclick='window.location.href=\"../PAGES/ADMIN_Select_Equipe.php?utilisateur=" . $_SESSION['utilisateur']['IdUtilisateur'] . "\";'>";
-        echo "</div>";
-        echo "</form>";
 
 
     } else {
