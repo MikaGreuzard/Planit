@@ -51,9 +51,9 @@
      <li>
        <a href="../PAGES/ADMIN_Projet.php">
          <i class='bx bx-spreadsheet' ></i>
-         <span class="links_name">Projet</span>
+         <span class="links_name">Projets</span>
        </a>
-       <span class="tooltip">Projet</span>
+       <span class="tooltip">Projets</span>
      </li>
      <!--<li>
        <a href="#">

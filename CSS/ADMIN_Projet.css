@@ -301,25 +301,25 @@
 }
 
 /* Style pour les éléments de liste avec l'icône de tâche dans la sidebar */
-.Tache i {
+.Projet i {
   background: #FFF;
   color: #28536B;
   }
 
 /* Style pour les éléments de liste avec l'icône de tâche survolés dans la sidebar */
-.sidebar .Tache li {
+.sidebar .Projet li {
   background: #fff;
   color: #28536B;
 }
 
-/* Style pour les liens avec la classe .Tache dans la sidebar */
-.sidebar li a.Tache {
+/* Style pour les liens avec la classe .Projet dans la sidebar */
+.sidebar li a.Projet {
   background: #FFF;
   color: #28536B;
 }
 
-/* Style pour le nom des liens avec la classe .Tache dans la sidebar */
-.sidebar li a.Tache .links_name.Tache {
+/* Style pour le nom des liens avec la classe .Projet dans la sidebar */
+.sidebar li a.Projet .links_name.Projet {
   color: #28536B;
 }
 
@@ -767,7 +767,7 @@ thead th.active, tbody td.active {
 
 
 
-/* ============================== BOUTON AJOUTER UNE TACHE ============================== */
+/* ============================== BOUTON AJOUTER UNE Projet ============================== */
 
 .btntest {
 /* Apparence de base */

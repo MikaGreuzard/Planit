@@ -77,14 +77,14 @@
        </a>
        <span class="tooltip Tache">Tâches</span>
      </li>
-     <!-- <li>
-       <a href="#">
-         <i class='bx bx-pie-chart-alt-2' ></i>
-         <span class="links_name">Analyses</span>
-       </a>
-       <span class="tooltip">Analyses</span>
-     </li>
      <li>
+       <a href="../PAGES/ADMIN_Projet.php">
+         <i class='bx bx-spreadsheet' ></i>
+         <span class="links_name">Projets</span>
+       </a>
+       <span class="tooltip">Projets</span>
+     </li>
+     <!--<li>
        <a href="#">
          <i class='bx bx-folder' ></i>
          <span class="links_name">Archives</span>

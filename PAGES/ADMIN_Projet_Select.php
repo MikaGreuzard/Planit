@@ -67,9 +67,9 @@
      <li>
        <a href="../PAGES/ADMIN_Projet.php">
          <i class='bx bx-spreadsheet' ></i>
-         <span class="links_name">Projet</span>
+         <span class="links_name">Projets</span>
        </a>
-       <span class="tooltip">Projet</span>
+       <span class="tooltip">Projets</span>
      </li>
      <!--<li>
        <a href="#">
@@ -118,7 +118,7 @@
     <main class="table">
         <section class="table__header">
         <?php $ID = isset($_GET["ID"]) ? intval($_GET["ID"]) : null; ?>
-        <h1 class='TableTitre'>Projet <?php echo $_SESSION['ServiceUtilisateur'].' - '.$pdo->query("SELECT NomProjet FROM Projet WHERE IdProjet = $ID")->fetchColumn(); ?></h1>
+        <h1 class='TableTitre'><?php echo $pdo->query("SELECT NomProjet FROM Projet WHERE IdProjet = $ID")->fetchColumn(); ?> - Tâches</h1>
             <div class="input-group">
                 <input type="search" placeholder="Rechercher...">
                 <i class='bx bx-search'></i>

@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="../CSS/ADMIN_Tache.css">
+    <link rel="stylesheet" href="../CSS/ADMIN_Projet.css">
     <title>Plan'it</title> <!-- Titre de la page -->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -49,11 +49,11 @@
        <span class="tooltip Tache">Tâches</span>
      </li>
      <li>
-       <a href="../PAGES/ADMIN_Projet.php">
-         <i class='bx bx-spreadsheet' ></i>
-         <span class="links_name">Projet</span>
+       <a href="../PAGES/ADMIN_Projet.php" class='Projet'>
+         <i class='bx bx-spreadsheet Projet' ></i>
+         <span class="links_name Projet">Projets</span>
        </a>
-       <span class="tooltip">Projet</span>
+       <span class="tooltip Projet">Projets</span>
      </li>
      <!--<li>
        <a href="#">
@@ -118,6 +118,7 @@
                         <th> Date fin <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Chef <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                         <th> Sélection <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
+                        <th> Supprimer <span class="icon-arrow"><i class='bx bx-up-arrow-alt' ></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,7 +136,7 @@
                           # On affiche les données de la base
                           foreach($Projets as $Projet) {
                               # On affiche les données de la base
-                              print "<tr><td>" . $Projet["IdProjet"] . "</td> <td>" . $Projet["NomProjet"] . "</td> <td>" . $Projet["DescriptionProjet"] . "</td> <td>" . $Projet["DateDebutProjet"] . "</td> <td>" . $Projet["DateFinProjet"] . "</td> <td>" . $Projet["ChefProjet"] . "</td>               <td> <a href='../PAGES/ADMIN_Projet_Select.php?ID=" . $Projet["IdProjet"] . "' class='boutonModifier'><i class='bx bx-search' ></i></i></a> </td>                </tr>";
+                              print "<tr><td>" . $Projet["IdProjet"] . "</td> <td>" . $Projet["NomProjet"] . "</td> <td>" . $Projet["DescriptionProjet"] . "</td> <td>" . $Projet["DateDebutProjet"] . "</td> <td>" . $Projet["DateFinProjet"] . "</td> <td>" . $Projet["ChefProjet"] . "</td>               <td> <a href='../PAGES/ADMIN_Projet_Select.php?ID=" . $Projet["IdProjet"] . "' class='boutonModifier'><i class='bx bx-search' ></i></i></a> </td>                  <td><form action='../PHP/ADMIN_Projet_Delete_Config.php' method='post'><input type='hidden' name='id' value=' " . $Projet["IdProjet"] . "'><button type='submit' value='Supprimer' class='BoutonSupp'><i class='bx bx-x'></i></form></td>               </tr>";
                           }
                       } catch (PDOException $e) {
                           # En cas d'erreur, on affiche le message d'erreur
@@ -145,6 +146,7 @@
                 </tbody>
             </table>
         </section>
+        <a href="../PAGES/ADMIN_Projet_Input.php" class='btntest'>Nouveau projet</a>
     </main>
     <script src='../JS/ADMIN_Tache.js'></script>
 </body>
